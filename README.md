@@ -6,7 +6,6 @@ This is a job search website where employers can post job listings, and users ca
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Database Structure](#database-structure)
 
 ## Features
 - **Job Posting**: Employers can register, log in, and post job openings with details such as job title, description, requirements, and location.
