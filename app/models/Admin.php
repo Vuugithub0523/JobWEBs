@@ -1,0 +1,1 @@
+<!-- Các chức năng của quản trị viên như duyệt hoặc xóa bài đăng. -->

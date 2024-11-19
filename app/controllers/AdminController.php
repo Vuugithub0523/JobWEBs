@@ -1,0 +1,1 @@
+<!-- chứa các phương thức quản lý trang như duyệt bài đăng tuyển, xem và xóa tài khoản người dùng, thống kê số liệu trang web. -->
