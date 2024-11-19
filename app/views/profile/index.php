@@ -1,0 +1,1 @@
+<!-- hiển thị thông tin người dùng như tên, email, danh sách công việc đã ứng tuyển, v.v. -->
