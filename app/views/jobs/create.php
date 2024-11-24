@@ -1,1 +1,0 @@
-<!-- form HTML để nhà tuyển dụng nhập các thông tin cần thiết cho công việc, như tiêu đề công việc, mô tả, yêu cầu, mức lương, v.v. -->
