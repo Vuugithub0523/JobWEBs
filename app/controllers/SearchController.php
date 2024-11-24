@@ -1,1 +1,0 @@
-<!-- xử lý các yêu cầu tìm kiếm việc làm từ người dùng, lấy dữ liệu công việc phù hợp từ database với phương thức search(). -->

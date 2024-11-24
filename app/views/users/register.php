@@ -1,1 +1,0 @@
-<!-- chứa form HTML cho người dùng nhập thông tin đăng ký như tên, email, mật khẩu, v.v. -->
