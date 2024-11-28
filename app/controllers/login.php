@@ -1,5 +1,5 @@
 <?php
-class index extends DController{
+class login extends DController{
         public function __construct() {
         $data = array();
         
@@ -7,18 +7,12 @@ class index extends DController{
     }
 
     public function index() {
-        $this->homepage();
+        $this->login();
     }
 
-    public function homepage() {
+    public function login() {
         $this->load->view('header');
         $this->load->view('home');
-        $this->load->view('footer');
-    }
-    
-    public function notFound() {
-        $this->load->view('header');
-        $this->load->view('404');
         $this->load->view('footer');
     }
 }

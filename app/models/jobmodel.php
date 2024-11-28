@@ -19,8 +19,12 @@ class jobmodel extends DModel {
                 LEFT JOIN applications a ON j.job_id = a.job_id AND a.status = 'accepted'
                 GROUP BY j.job_id
                 ORDER BY j.posted_date DESC;";
+
+
         return $this->db->select($sql);
     }
+    
+
     public function countjob($table_jobs) {
         $sql = "SELECT 
                 COUNT($table_jobs.job_id) AS total_jobs,
@@ -52,6 +56,13 @@ class jobmodel extends DModel {
 
     public function insertjob($table_jobs, $data) {
         return $this->db->insert($table_jobs, $data);
+    }
+
+    public function updatejob($table_jobs, $data, $condition) {
+        return $this->db->update($table_jobs, $data, $condition);
+    }
+    public function deletejob($table_jobs, $condition) {
+        return $this->db->delete($table_jobs, $condition);
     }
 
 }
