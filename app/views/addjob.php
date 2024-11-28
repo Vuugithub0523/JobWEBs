@@ -3,7 +3,7 @@
         echo 'Thêm thành công';
     }
 ?>
-<form autocomplete="off" action="http://localhost/job_finder_website/recruiter/insertjob" method="POST">
+<form autocomplete="off" action="<?php echo BASE_URL ?>recruiter/insertjob" method="POST">
     <input type="hidden" value="2" name="recruiter_id">
     <label for="">
         Tên công việc
