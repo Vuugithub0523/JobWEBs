@@ -16,17 +16,6 @@ class Main {
         $this->callMethod();
     }
 
-    // public function getUrl() {
-    //     $this->url = isset($_GET['url']) ? $_GET['url'] : NULL;
-
-    //     if ($this->url != NULL) {
-    //         $this->url = rtrim($this->url, '/');
-    //         $this->url = explode('/', filter_var($this->url, FILTER_SANITIZE_URL));
-    //     } else {
-    //         $url = [];
-    //     }
-    // }
-
     public function getUrl() {
         $this->url = isset($_GET['url']) ? $_GET['url'] : null;
     
@@ -37,27 +26,7 @@ class Main {
             $this->url = []; // Sửa thành $this->url để tránh lỗi
         }
     }
-    
 
-    // public function loadController() {
-    //     if (!isset($this->url[0])) {
-    //         include $this->controllerPath . $this->controllerName . ".php";
-    //         $this->controller = new $this->controllerName;
-    //     }else {
-    //         $this->controllerName = $this->url[0];
-    //         $fileName = $this->controllerPath . $this->controllerName . ".php";
-    //         if (file_exists($fileName)) {
-    //             include $fileName;
-    //             if(class_exists($this->controllerName)) {
-    //                 $this->controller = new $this->controllerName();
-    //             }else {
-
-    //             }
-    //         }else {
-
-    //         }
-    //     }
-    // }
     public function loadController() {
         if (!isset($this->url[0])) {
             include $this->controllerPath . $this->controllerName . ".php";
@@ -80,31 +49,6 @@ class Main {
         }
     }
     
-    // public function callMethod() {
-    //     if(isset($this->url[2])) {
-    //         $this->methodName = $this->url[1];
-    //         if(method_exists($this->controller, $this->methodName)) {
-    //             $this->controller->{$this->methodName}($this->url[2]);
-    //         }else {
-    //             header("Location:". BASE_URL . "/index");
-    //         }
-    //     }else {
-    //         if(isset($this->url[1])) {
-    //             $this->methodName = $this->url[1];
-    //             if(method_exists($this->controller, $this->methodName)) {
-    //                 $this->controller->{$this->methodName}();
-    //             }else {
-    //                 header("Location:". BASE_URL . "/index");
-    //             }
-    //         }else {
-    //             if(method_exists($this->controller, $this->methodName)) {
-    //                 $this->controller->{$this->methodName}();
-    //             }else {
-    //                 header("Location:". BASE_URL . "/index");
-    //             }
-    //         }
-    //     }
-    // }
 
     public function callMethod() {
         if ($this->controller === null) {

@@ -13,15 +13,6 @@
        }
    });
    
-   // JS xử lí nút open, close
-   
-   // let action = document.querySelectorAll(".badge").textContent;
-   // if (action == 'Open') {
-   //     action.classList.add("open");
-   // }else {
-   //     action.classList.add("close");
-   // }
-   
    // -----------------------JS để chỉnh sửa AVT nhà tuyển dụng-----------------------------
    
    
@@ -32,7 +23,8 @@
        document.getElementById("job-list").style.display = "none";
        document.getElementById('applicant-list').style.display = 'none';
        document.getElementById('applicant-detail').style.display = 'none';
-       document.getElementById('create-job-form').style.display = 'none';
+       document.getElementById('create-job-form1').style.display = 'none';
+       document.getElementById('create-job-form2').style.display = 'none';
    });
    document.getElementById("profile-button").addEventListener("click", function () {
        document.getElementById("dashboard").style.display = "none";
@@ -40,7 +32,8 @@
        document.getElementById("job-list").style.display = "none";
        document.getElementById('applicant-list').style.display = 'none';
        document.getElementById('applicant-detail').style.display = 'none';
-       document.getElementById('create-job-form').style.display = 'none';
+       document.getElementById('create-job-form1').style.display = 'none';
+       document.getElementById('create-job-form2').style.display = 'none';
    
    });
    document.getElementById("job-list-button").addEventListener("click", function () {
@@ -49,7 +42,8 @@
        document.getElementById("job-list").style.display = "block";
        document.getElementById('applicant-list').style.display = 'none';
        document.getElementById('applicant-detail').style.display = 'none';
-       document.getElementById('create-job-form').style.display = 'none';
+       document.getElementById('create-job-form1').style.display = 'none';
+       document.getElementById('create-job-form2').style.display = 'none';
    
    });
    
@@ -219,46 +213,42 @@
        });
      });
      
-   // JS xử lí hiện thông tin ứng viên khi nhấn vào xem đơn ứng tuyển
-   
-   
-   document.addEventListener("DOMContentLoaded", () => {
-       const applicantList = document.getElementById("applicant-list");
-       const applicantDetail = document.getElementById("applicant-detail");
-       const backBtn = document.getElementById("back-btn");
-       const viewBtns = document.querySelectorAll(".btn-view");
-   
-       // Hiển thị chi tiết ứng viên
-       viewBtns.forEach((btn) => {
-           btn.addEventListener("click", () => {
-               console.log('hello');
-               applicantList.style.display = "none";
-               applicantDetail.style.display = "block";
-           });
-       });
-   
-       // Quay lại danh sách ứng viên
-       backBtn.addEventListener("click", () => {
-           applicantDetail.style.display = "none";
-           applicantList.style.display = "block";
-       });
-   });
+
    
    document.addEventListener("DOMContentLoaded", () => {
        const addNewJobBtns = document.querySelectorAll("#add-new-job-btn");
+       const viewBtns = document.querySelectorAll(".btn-view");
        const jobList = document.getElementById("job-list");
-       const applicantList = document.getElementById("applicant-list");
+       const applicantList = document.getElementById('applicant-list');
        const applicantDetail = document.getElementById("applicant-detail");
-       const createJobForm = document.getElementById("create-job-form");
-   
+       const createJobForm1 = document.getElementById("create-job-form1");
+       const createJobForm2 = document.getElementById("create-job-form2");
+       const createJobForm3 = document.getElementById("create-job-form3");
+       const nextFirstFormBtn = document.querySelector("#next-btn1");
+       const nextSecondFormBtn = document.querySelector("#next-btn2");
+
        addNewJobBtns.forEach((btn) => {
            btn.addEventListener("click", () => {
-               createJobForm.style.display = "block";
+               createJobForm1.style.display = "block";
                jobList.style.display = "none";
                applicantList.style.display = "none";
                applicantDetail.style.display = "none";
            });
        });
+       nextFirstFormBtn.addEventListener("click", () => {
+         createJobForm1.style.display = "none";
+         createJobForm2.style.display = "block";
+        });
+        nextSecondFormBtn.addEventListener("click", () => {
+          createJobForm2.style.display = "none";
+          createJobForm3.style.display = "block";
+        });
+        viewBtns.forEach((btn) => {
+         btn.addEventListener("click", () => {
+             applicantList.style.display = "none";
+             applicantDetail.style.display = "block";
+           });
+       });
+
    });
-   
    

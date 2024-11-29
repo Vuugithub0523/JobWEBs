@@ -712,9 +712,26 @@ textarea {
 
 /* CSS Tạo việc mới */
 
-.create-job-form h1 {
+.create-job-form1 h1 {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    padding: 16px;
+    color: #027bff;
+    border-bottom: 1px solid #ccc;
+}
+.create-job-form2 h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding: 16px;
+    color: #027bff;
+    border-bottom: 1px solid #ccc;
+}
+.create-job-form3 h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding: 16px;
+    color: #027bff;
+    border-bottom: 1px solid #ccc;
 }
 
 .create-job-btn {
@@ -728,16 +745,24 @@ textarea {
 .form-group {
     margin-bottom: 20px;
 }
+.form-group p{
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 16px;
+}
 
 .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    color: #027bff;
 }
 
 .checkbox-group label {
     display: inline-block;
-    margin-right: 10px;
+    margin: 10px;
+    text-align: center;
+    color: #000;
 }
 
 .salary-range {
@@ -746,7 +771,7 @@ textarea {
 }
 
 .salary-range input {
-    width: 100px;
+    width: 246px;
     margin: 0 5px;
 }
 
@@ -766,10 +791,19 @@ textarea {
     cursor: pointer;
 }
 
+
+.next-button {
+    text-align: right;
+}
 .submit-btn {
     padding: 10px 15px;
-    background-color: #4caf50;
+    width: 114px;
+    background-color: #347ab8;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+.tox-statusbar {
+    display: none !important;
 }
