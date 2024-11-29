@@ -28,4 +28,27 @@ class Database extends PDO {
         }
         return $statement->execute();
     }
+
+    public function update($table, $data, $condition) {
+        $updateKeys = NULL;
+
+        foreach ($data as $key => $value) {
+            $updateKeys .= "$key=:$key,";
+        }
+
+        $updateKeys = rtrim($updateKeys, ',');
+
+        $sql = "update $table set $updateKeys where $condition";
+        $statement = $this->prepare($sql);
+        foreach($data as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+        return $statement->execute();   
+    }
+
+    public function delete($table, $condition, $limit = 1) {
+        $sql = "delete from $table where $condition limit $limit";
+        return $this->exec($sql);
+    }
+
  }

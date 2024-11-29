@@ -8,5 +8,4 @@ class post extends DController{
     public function product_post() {
         echo 'Chi tiết bài viết';
     }
-
 }
