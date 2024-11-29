@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recruiter Profile</title>
-    <link rel="stylesheet" href="public/css/recruiter.css">
+    <link rel="stylesheet" href="../public/css/recruiter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tiny.cloud/1/swqgfqe5l90l69fjhsx5hywhqrqvo5n5djj34ve5in5yflqu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     <div class="profile-container">
-        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">JobFunny</div>
             <nav class="menu">
@@ -318,54 +318,113 @@
                     </div>
                 </div>
             </div>
-            <div id="create-job-form" class="create-job-form" style="display: none;">
+            <form>
+            <div id="create-job-form1" class="create-job-form1 profile-section" style="display: none;">
                 <h1>Tạo việc làm</h1>
-                <form>
                     <!-- Tiêu đề công việc -->
-                    <div class="form-group">
-                        <label for="job-title">Tiêu đề công việc</label>
-                        <input type="text" id="job-title" placeholder="e.g. Software Engineer" required>
-                    </div>
-
+                <div class="form-group">
+                    <label for="job-title">Tiêu đề công việc</label>
+                    <p><i>Tiêu đề công việc phải miêu tả một vị trí</i></p>
+                    <input type="text" id="job-title" placeholder="e.g. Software Engineer" required>
+                </div>
                     <!-- Loại hình làm việc -->
-                    <div class="form-group">
-                        <label>Loại hình việc làm</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="job-type" value="Full-Time"> Full-Time</label>
-                            <label><input type="checkbox" name="job-type" value="Part-Time"> Part-Time</label>
-                            <label><input type="checkbox" name="job-type" value="Remote"> Remote</label>
-                            <label><input type="checkbox" name="job-type" value="Internship"> Internship</label>
-                            <label><input type="checkbox" name="job-type" value="Contract"> Contract</label>
-                        </div>
+                <div class="form-group">
+                    <label>Loại hình việc làm</label>
+                    <div class="checkbox-group">
+                        <label><input type="radio" name="job-type" value="Full-Time"> Full-Time</label>
+                        <label><input type="radio" name="job-type" value="Part-Time"> Part-Time</label>
+                        <label><input type="radio" name="job-type" value="Remote"> Remote</label>
+                        <label><input type="radio" name="job-type" value="Internship"> Internship</label>
+                        <label><input type="radio" name="job-type" value="Contract"> Contract</label>
                     </div>
-
+                </div>
                     <!-- Lương -->
-                    <div class="form-group">
-                        <label for="salary">Lương</label>
-                        <div class="salary-range">
-                            <input type="number" id="salary-min" placeholder="$ Min" required>
-                            <span>to</span>
-                            <input type="number" id="salary-max" placeholder="$ Max" required>
-                        </div>
+                <div class="form-group">
+                    <label for="salary">Lương</label>
+                    <div class="salary-range">
+                        <input type="number" id="salary-max" placeholder="$ Min" required>
                     </div>
-
+                </div>
                     <!-- Yêu cầu kỹ năng -->
-                    <div class="form-group">
-                        <label>Yêu cầu kỹ năng</label>
-                        <div class="skills">
-                            <span>Graphic Design</span>
-                            <span>Communication</span>
-                            <span>Illustrator</span>
-                            <button type="button">+ Thêm kỹ năng</button>
-                        </div>
+                <div class="form-group">
+                    <label>Yêu cầu kỹ năng</label>
+                    <p><i>Mô tả chi tiết các yêu cầu cho công việc</i></p>
+                    <div class="skills">
+                        <textarea name="" id="myTextarea" placeholder="Thêm yêu cầu công việc"></textarea>
                     </div>
-
-                    <button type="submit" class="submit-btn">Tiếp theo</button>
-                </form>
+                </div>
+                <div class="next-button">
+                    <button id="next-btn1" type="button" class="submit-btn">Tiếp theo</button>
+                </div>
             </div>
+            <div id="create-job-form2" class="create-job-form2 profile-section" style="display: none;">
+                <h1>Tạo việc làm</h1>
+                <div class="form-group">
+                    <label>Trách nhiệm</label>
+                    <p><i>Phát thảo các trách nhiệm cốt lõi của vị trí</i></p>
+                    <div class="skills">
+                        <textarea name="editorContent" id="myTextarea" placeholder="Thêm trách nhiệm công việc" style="height: 150px;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Quyền lợi và lợi ích</label>
+                    <p><i>Khuyến khích nhiều người nộp đơn hơn bằng cách chia sẻ các phần thưởng và lợi ích hấp dẫn mà bạn cung cấp cho nhân viên của mình</i></p>
+                    <div class="skills">
+                        <textarea name="editorContent" id="myTextarea" placeholder="Thêm quyền lợi và lợi ích" style="height: 150px;"></textarea>
+                    </div>
+                </div>
+                
+                <div class="next-button">
+                    <button type="button" id="next-btn2" class="submit-btn">Tiếp theo</button>
+                </div>
+            </div>
+            <div id="create-job-form3" class="create-job-form3 profile-section" style="display: none;">
+                <h1>Tạo việc làm</h1>
+                <div class="form-group">
+                    <label>Cấp bậc công việc</label>
+                    <div class="checkbox-group">
+                        <label><input type="radio" name="job-type" value="1">Junior</label>
+                        <label><input type="radio" name="job-type" value="2">Mid-level</label>
+                        <label><input type="radio" name="job-type" value="3">Senior</label>
+                        <label><input type="radio" name="job-type" value="4">Internship</label>
+                        <label><input type="radio" name="job-type" value="5"> Contract</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="salary">Số lượng cần tuyển</label>
+                    <div class="salary-range">
+                        <input type="number" id="salary-max" placeholder="Nhập số lượng" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="salary">Hạn chót</label>
+                    <div class="salary-range">
+                        <input type="date" id="salary-max" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Mô tả công việc</label>
+                    <p><i>Mô tả chi tiết các công việc sẽ làm đối với công việc</i></p>
+                    <div class="skills">
+                        <textarea name="" id="myTextarea" placeholder="Thêm mô tả công việc"></textarea>
+                    </div>
+                </div>
+                <div class="next-button">
+                    <button type="submit" id="submit" class="submit-btn">Hoàn tất</button>
+                </div>
+            </div>
+            </form>
         </div>
         </main>
     </div>
-<script src="public/js/recruiter.js"></script>
+<script src="../public/js/recruiter.js"></script>
+<script>
+    tinymce.init({
+    selector: '#myTextarea',
+    plugins: 'lists link image table code',
+    toolbar: 'undo redo | bold italic underline | bullist numlist | link image | code', // Cấu hình toolbar
+    height: 200
+});
+</script>
 </body>
 </html>
