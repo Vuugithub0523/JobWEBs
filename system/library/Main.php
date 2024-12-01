@@ -63,6 +63,7 @@ class Main {
                 $this->controller->{$this->methodName}($this->url[2]);
             } else {
                 header("Location: " . BASE_URL . "error/notfound");
+                header("Location: " . BASE_URL . "error/notfound");
             }
         } else {
             if (isset($this->url[1])) {
@@ -71,11 +72,13 @@ class Main {
                     $this->controller->{$this->methodName}();
                 } else {
                     header("Location: " . BASE_URL . "error/notfound");
+                    header("Location: " . BASE_URL . "error/notfound");
                 }
             } else {
                 if (method_exists($this->controller, $this->methodName)) {
                     $this->controller->{$this->methodName}();
                 } else {
+                    header("Location: " . BASE_URL . "error/notfound");
                     header("Location: " . BASE_URL . "error/notfound");
                 }
             }

@@ -129,6 +129,17 @@
     .mar{
         margin:0;
     }
+    .control-displayJob{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:2px 20px;
+        background:yellow;
+    }
+    .control-displayJob:hover{
+        background:red;
+        cursor:pointer;
+    }
 </style>
 <?php
 if(isset($data)&&$data){
@@ -209,17 +220,6 @@ $numJob= count($job);
         <div class="com2-left" >
             <h2>Hồ sơ công ty</h2>
             <div>
-            Stripe là một nền tảng phần mềm để khởi nghiệp
-                và điều hành các doanh nghiệp internet.
-                Hàng triệu doanh nghiệp dựa vào các
-                công cụ phần mềm của Stripe để chấp nhận thanh toán, 
-                mở rộng trên toàn cầu và quản lý doanh nghiệp trực tuyến của họ.
-                Stripe đã đi đầu trong việc mở rộng thương mại internet, thúc đẩy các
-                    mô hình kinh doanh mới và hỗ trợ các nền tảng mới nhất, từ các thị trường đến
-                    các trang thương mại di động. Chúng tôi tin rằng việc tăng trưởng GDP của internet 
-                    là một vấn đề bắt nguồn từ mã và thiết kế, không phải tài chính.
-                    Stripe được xây dựng cho các nhà phát triển, 
-                    nhà sản xuất và người sáng tạo. Chúng tôi nỗ lực giải quyết các vấn đề kỹ thuật khó khăn cần thiết để xây dựng cơ sở hạ tầng kinh tế toàn cầu—từ việc thiết kế các hệ thống có độ tin cậy cao đến phát triển các thuật toán học máy tiên tiến để ngăn chặn gian lận.
                     <?php if(isset($company)){echo($company[0]['description']);} ?>
             </div>
             <h2>Các trang mạng xã hội</h2>
@@ -287,11 +287,24 @@ $numJob= count($job);
     </div>
 </div>
 <div class="cf" style="background:rgb(248,248,253);">
-    <h2>Việt làm mở</h2>
+    <div class="b-row" style="justify-content:space-between;">
+        <h2>Việt làm mở</h2>
+        <div class="control-displayJob" data-ctrlD="1">></div>
+    </div>
     <div class="b-row flex-wrap" style="gap: 10px 20px;justify-content: space-between;">
         <?php
             if(isset($job)){
+                //lấy các công việt có deadline chưa đến hạng
+                $dateCurent= new dateTime();
+                $list2=[];
                 foreach($job as $value){
+                    $dedJob=new dateTime($value['deadline']);
+                    if($dedJob>$dateCurent){
+                        array_push($list2, $value);
+                    }
+                }
+                $job=$list2;
+                foreach($job as $index => $value){
                     $ind = null;
                     foreach($industry as $valuechil){
                         if($value['industry_id']==$valuechil['industry_id']){
@@ -311,7 +324,7 @@ $numJob= count($job);
                         }
                     }
                     ?>
-                        <div class="b-row card_job">
+                        <div class="b-row card_job" data-display="<?php if($index>3){ echo(2);}else{echo(1);}?>">
                             <div class="card__logo">
                                 <img src="logo-placeholder.png" alt="Company Logo">
                             </div>
@@ -328,33 +341,36 @@ $numJob= count($job);
                 }
             } 
         ?>
-        <div class="b-row card_job">
-            <div class="card__logo">
-                <img src="logo-placeholder.png" alt="Company Logo">
-            </div>
-            <div class="card__content">
-                <h3 >HR Manager</h3>
-                <p >Packer • Lucern, Switzerland</p>
-                <div class="card__tags">
-                <span class="tag ">Full-Time</span>
-                <span class="tag ">Marketing</span>
-                <span class="tag ">Design</span>
-                </div>
-            </div>
-        </div>
-        <div class="b-row card_job">
-            <div class="card__logo">
-                <img src="logo-placeholder.png" alt="Company Logo">
-            </div>
-            <div class="card__content">
-                <h3 >HR Manager</h3>
-                <p >Packer • Lucern, Switzerland</p>
-                <div class="card__tags">
-                <span class="tag ">Full-Time</span>
-                <span class="tag ">Marketing</span>
-                <span class="tag ">Design</span>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+<script>
+    //document.addEventListener('DOMContentLoaded',showResultRooms);
+    var card_jobs= document.querySelectorAll('.card_job');
+    card_jobs.forEach(job => {
+        if(job.dataset.display==1){
+            job.style.display="flex";
+        }else{
+            job.style.display="none";
+        }
+    } )
+    var ctrlDisplay=document.querySelector('.control-displayJob');
+    ctrlDisplay.addEventListener('click',function(){
+        if(ctrlDisplay.dataset.ctrlD==1){
+            ctrlDisplay.dataset.ctrlD=0;
+            ctrlDisplay.innerHTML="<";
+            card_jobs.forEach(job=>{
+                job.style.display="flex";
+            })
+        }else{
+            ctrlDisplay.dataset.ctrlD=1;
+            ctrlDisplay.innerHTML=">";
+            card_jobs.forEach(job=>{
+                if(job.dataset.display==1){
+                    job.style.display="flex";
+                }else{
+                    job.style.display="none";
+                }
+            })
+        }
+    })
+</script>

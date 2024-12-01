@@ -9,7 +9,7 @@
             return $this->db->select($sql,$data);
         }
         public function getJob($user_id){
-            $sql = "select * from jobs where user_id= : user_id and status='open'";;
+            $sql = "select * from jobs where user_id = :user_id and status='open'";
             $data=[':user_id'=>$user_id];
             return $this->db->select($sql,$data);
         }
