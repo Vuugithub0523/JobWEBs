@@ -15,4 +15,8 @@ class index extends DController{
         $this->load->view('home');
         $this->load->view('footer');
     }
+
+    public function notfound() {
+        $this->load->view('404');
+    }
 }

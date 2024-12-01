@@ -676,6 +676,7 @@ textarea {
 
 .right-section {
     width: 65%;
+    text-align: center;
 }
 
 .right-section h2 {
@@ -684,13 +685,37 @@ textarea {
 }
 
 .right-section img {
-    width: 100%;
+    width: 80%;
     border: 1px solid #ddd;
     border-radius: 8px;
 }
 
 .action-buttons {
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.back-to-home {
+    margin-top: 26px;
+}
+
+.btn-view-application {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #c3d6ff; /* Màu nền sáng */
+    color: #4f6cc2; /* Màu chữ */
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #4f6cc2;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-view-application:hover {
+    background-color: #4f6cc2; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
 }
 
 .action-buttons button {
@@ -806,4 +831,10 @@ textarea {
 }
 .tox-statusbar {
     display: none !important;
+}
+
+.empty-message {
+    text-align: center;
+    font-style: italic;
+    color: #777;
 }

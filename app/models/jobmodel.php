@@ -44,13 +44,68 @@ class jobmodel extends DModel {
         return $this->db->select($sql);
     }
      
-    public function jobbyid($table_jobs, $id) {
-        $sql = "select * from " . $table_jobs . " where job_id =:id";
+    // public function jobbyid($table_jobs, $id) {
+    //     $sql = "select * from " . $table_jobs . " where job_id =:id";
     
-        $data = array(':id' => $id);
+    //     $data = array(':id' => $id);
+    
+    //     return $this->db->select($sql, $data);
+    // }
+
+    public function jobbyid($table_jobs, $id) {
+        if (!is_numeric($id)) {
+            throw new Exception("Invalid ID");
+        }
+        $sql = "SELECT 
+                j.job_id,
+                j.job_title,
+                jt.job_type_name AS job_type,
+                j.status AS job_status,
+                j.required_candidates AS required_candidates,
+                j.total_applied AS total_applied,
+                a.status AS application_status,
+                a.application_id AS application_id,
+                u.full_name AS applicant_name,
+                a.apply_at AS application_date,
+                COUNT(a.application_id) OVER (PARTITION BY j.job_id) AS total_applicants
+                FROM 
+                $table_jobs j
+                LEFT JOIN applications a ON j.job_id = a.job_id
+                LEFT JOIN users u ON a.user_id = u.user_id
+                LEFT JOIN job_type jt ON j.job_type_id = jt.job_type_id
+                WHERE 
+                j.job_id = :id";
+        $data = [':id' => $id];
+        
+        return $this->db->select($sql, $data);
+    }
+    
+
+    public function applicantbyjobid($table_jobs, $id) {
+        if (!is_numeric($id)) {
+            throw new Exception("Invalid ID");
+        }
+        $sql = "SELECT 
+                    a.application_id,
+                    u.full_name AS candidate_name,
+                    j.job_title,
+                    a.apply_at AS application_date,
+                    u.phone as phone_number,
+                    u.email as email_address,
+                    a.cv AS cv_file
+                FROM 
+                    $table_jobs a
+                JOIN 
+                    users u ON a.user_id = u.user_id
+                JOIN 
+                    jobs j ON a.job_id = j.job_id
+                WHERE
+                    a.application_id = :id";
+        $data = [':id' => $id];
     
         return $this->db->select($sql, $data);
     }
+    
 
 
 

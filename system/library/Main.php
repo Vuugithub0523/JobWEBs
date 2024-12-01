@@ -13,7 +13,7 @@ class Main {
     public function __construct() {
         $this->getUrl();
         $this->loadController();
-        $this->callMethod();
+        $this->callMethod();    
     }
 
     public function getUrl() {
@@ -50,6 +50,36 @@ class Main {
     }
     
 
+    // public function callMethod() {
+    //     if ($this->controller === null) {
+    //         header("Location: " . BASE_URL . "index/notfound");
+    //         return;
+    //     }
+    
+    //     if (isset($this->url[2])) {
+    //         $this->methodName = $this->url[1];
+    //         if (method_exists($this->controller, $this->methodName)) {
+    //             $this->controller->{$this->methodName}($this->url[2]);
+    //         } else {
+    //             header("Location: " . BASE_URL . "index/notfound");
+    //         }
+    //     } else {
+    //         if (isset($this->url[1])) {
+    //             $this->methodName = $this->url[1];
+    //             if (method_exists($this->controller, $this->methodName)) {
+    //                 $this->controller->{$this->methodName}();
+    //             } else {
+    //                 header("Location: " . BASE_URL . "index/notfound");
+    //             }
+    //         } else {
+    //             if (method_exists($this->controller, $this->methodName)) {
+    //                 $this->controller->{$this->methodName}();
+    //             } else {
+    //                 header("Location: " . BASE_URL . "index/notfound");
+    //             }
+    //         }
+    //     }
+    // }
     public function callMethod() {
         if ($this->controller === null) {
             // Xử lý nếu controller không được khởi tạo
@@ -57,10 +87,12 @@ class Main {
             return;
         }
     
-        if (isset($this->url[2])) {
-            $this->methodName = $this->url[1];
-            if (method_exists($this->controller, $this->methodName)) {
-                $this->controller->{$this->methodName}($this->url[2]);
+        $methodName = $this->url[1] ?? $this->methodName;
+        $parameter = $this->url[2] ?? null;
+    
+        if (method_exists($this->controller, $methodName)) {
+            if ($parameter) {
+                $this->controller->{$methodName}($parameter);
             } else {
                 header("Location: " . BASE_URL . "error/notfound");
                 header("Location: " . BASE_URL . "error/notfound");
