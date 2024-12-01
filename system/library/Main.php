@@ -100,7 +100,7 @@ class Main {
         }
     }
     
-    
+    public function hello() {}
 
     
 }
