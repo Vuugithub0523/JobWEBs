@@ -31,8 +31,8 @@ class recruiter extends DController{
         $company = $this->load->model('company');
 
         $table_jobs = 'jobs';
-        $table_company = 'companies';
         $id = 1;
+        $table_company = 'companies';
 
         $data['countjob'] = $jobmodel->countjob($table_jobs);
         $data['list_all_job'] = $jobmodel->list_all_job($table_jobs);
@@ -42,30 +42,36 @@ class recruiter extends DController{
         $this->load->view('recruiter', $data);
     }
     public function jobbyid() {
-        $this->load->view('header');
+        $id = $_GET['id'];
         $jobmodel = $this->load->model('jobmodel');
         $table_jobs = 'jobs';
-        $id = 1;
         $data['jobbyid'] = $jobmodel->jobbyid($table_jobs, $id);
-        $this->load->view('jobbyid', $data);
-        $this->load->view('footer');
+        $this->load->view('applicant_list', $data);
     }
+
+    public function applicantbyjobid() {
+        $id = $_GET['id'];
+
+        $jobmodel = $this->load->model('jobmodel');
+        $table_jobs = 'applications';
+
+        $data['applicantbyjobid'] = $jobmodel->applicantbyjobid($table_jobs, $id);
+        $this->load->view('applicant_detail', $data);
+    }  
 
     public function insertjob() {
         $jobmodel = $this->load->model('jobmodel');
         $table_jobs = 'jobs';
-
-        $recruiter_id = $_POST['recruiter_id'];
+        $user_id = $_POST['user_id'];
         $job_title = $_POST['job_title'];
         $job_type_id = $_POST['job_type_id'];
-        $category_id = $_POST['category_id'];
         $status = $_POST['status'];
-        $level = $_POST['level'];
+        $level_id = $_POST['level_id'];
         $job_description = $_POST['job_description'];
         $responsibilities = $_POST['responsibilities'];
         $requirements = $_POST['requirements'];
         $location = $_POST['location'];
-        $benefit_id = $_POST['benefit_id'];
+        $job_benefit = $_POST['job_benefit'];
         $salary = $_POST['salary'];
         $posted_date = $_POST['posted_date'];
         $deadline = $_POST['deadline'];
@@ -73,17 +79,16 @@ class recruiter extends DController{
         $total_applied = $_POST['total_applied'];
 
         $data = array(
-            'recruiter_id' => $recruiter_id,
+            'user_id' => $user_id,
             'job_title' => $job_title,
             'job_type_id' => $job_type_id,
-            'category_id' => $category_id,
             'status' => $status,
-            'level' => $level,
+            'level_id' => $level_id,
             'job_description' => $job_description,
             'responsibilities' => $responsibilities,
             'requirements' => $requirements,
             'location' => $location,
-            'benefit_id' => $benefit_id,
+            'job_benefit' => $job_benefit,
             'salary' => $salary,
             'posted_date' => $posted_date,
             'deadline' => $deadline,
@@ -93,12 +98,7 @@ class recruiter extends DController{
 
         $result = $jobmodel->insertjob($table_jobs, $data);
         
-        if($result == 1) {
-            $message['msg'] = 'Thêm thành công'; 
-        }else {
-            $message['msg'] = 'Thêm thất bại'; 
-        }
-        $this->load->view('addjob', $message);
+        
     }
     public function updatejob() {
         $jobmodel = $this->load->model('jobmodel');
