@@ -4,7 +4,8 @@ class Main {
 
     public $url;
 
-    public $controllerName = 'index';
+    // public $controllerName = 'index';
+    public $controllerName = 'homepage';
 
     public $methodName = 'index';
     public $controllerPath = 'app/controllers/';
@@ -99,8 +100,4 @@ class Main {
             header("Location: " . BASE_URL . "index/notfound");
         }
     }
-    
-    public function hello() {}
-
-    
 }

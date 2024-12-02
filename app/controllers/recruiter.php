@@ -17,27 +17,24 @@ class recruiter extends DController{
         $this->load->view('job', $data);
         $this->load->view('footer');
     }
-    public function list_all_job() {
-
-        $jobmodel = $this->load->model('jobmodel');
-        $table_jobs = 'jobs';
-        $data['job'] = $jobmodel->job($table_jobs);
-
-        $this->load->view('job', $data);
-    }
 
     public function recruiter() {
         $jobmodel = $this->load->model('jobmodel');
         $company = $this->load->model('company');
+        $recruitermodel = $this->load->model('recruitermodel');
+
 
         $table_jobs = 'jobs';
-        $id = 1;
+        $table_users = 'users';
+        $company_id = 1;
+        $user_id = 3;
         $table_company = 'companies';
 
         $data['countjob'] = $jobmodel->countjob($table_jobs);
         $data['list_all_job'] = $jobmodel->list_all_job($table_jobs);
-        $data['list_company'] = $company->list_company($table_company, $id);
+        $data['list_company'] = $company->list_company($table_company, $company_id);
         $data['topthreejob'] = $jobmodel->topthreejob($table_jobs);
+        $data['userbyid'] = $recruitermodel->userbyid($table_users, $user_id);
         
         $this->load->view('recruiter', $data);
     }
@@ -48,7 +45,6 @@ class recruiter extends DController{
         $data['jobbyid'] = $jobmodel->jobbyid($table_jobs, $id);
         $this->load->view('applicant_list', $data);
     }
-
     public function applicantbyjobid() {
         $id = $_GET['id'];
 

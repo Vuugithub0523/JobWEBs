@@ -9,9 +9,9 @@ class homepage extends DController {
     
     public function index() {
         // Code hiển thị trang chủ
-        // require_once './app/views/homepage.php';
+        require_once './app/views/homepage.php';
         
-        $this->load->view('homepage');
+        // $this->load->view('homepage');   
     }
 
     public function viewIndustry($industry_id) {
@@ -41,5 +41,8 @@ class homepage extends DController {
         // $data['industrybyid'] = $industryModel->industrybyid($industry, $industry_id);
         // $this->load->view('industrybyid', $data);
     }
+
+    public function notfound() {
+        $this->load->view('404');
+    }
 }
-?>
