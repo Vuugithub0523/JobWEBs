@@ -4,7 +4,7 @@ class Main {
 
     public $url;
 
-    public $controllerName = 'index';
+    public $controllerName = 'homepage';
 
     public $methodName = 'index';
     public $controllerPath = 'app/controllers/';
@@ -82,8 +82,7 @@ class Main {
     // }
     public function callMethod() {
         if ($this->controller === null) {
-            // Xử lý nếu controller không được khởi tạo
-            header("Location: " . BASE_URL . "error/notfound");
+            header("Location: " . BASE_URL . "index/notfound");
             return;
         }
     
@@ -94,29 +93,10 @@ class Main {
             if ($parameter) {
                 $this->controller->{$methodName}($parameter);
             } else {
-                header("Location: " . BASE_URL . "index/notfound");
-                header("Location: " . BASE_URL . "error/notfound");
+                $this->controller->{$methodName}();
             }
         } else {
-            if (isset($this->url[1])) {
-                $this->methodName = $this->url[1];
-                if (method_exists($this->controller, $this->methodName)) {
-                    $this->controller->{$this->methodName}();
-                } else {
-                    header("Location: " . BASE_URL . "error/notfound");
                     header("Location: " . BASE_URL . "error/notfound");
                 }
-            } else {
-                if (method_exists($this->controller, $this->methodName)) {
-                    $this->controller->{$this->methodName}();
-                } else {
-                    header("Location: " . BASE_URL . "error/notfound");
-                    header("Location: " . BASE_URL . "error/notfound");
-                }
-            }
         }
-    }
-    
-
-    
-}
+  

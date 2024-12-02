@@ -11,9 +11,7 @@ class index extends DController{
     }
 
     public function homepage() {
-        $this->load->view('header');
         $this->load->view('home');
-        $this->load->view('footer');
     }
 
     public function notfound() {

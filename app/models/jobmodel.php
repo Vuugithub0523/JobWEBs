@@ -9,6 +9,7 @@ class jobmodel extends DModel {
         $sql = "select * from " . $table_jobs;
         return $this->db->select($sql);
     }
+
     public function list_all_job($table_jobs) {
         $sql = "SELECT 
                 j.*,
