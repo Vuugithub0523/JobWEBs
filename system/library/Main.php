@@ -99,4 +99,4 @@ class Main {
                     header("Location: " . BASE_URL . "error/notfound");
                 }
         }
-  
+}

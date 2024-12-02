@@ -53,6 +53,24 @@ class jobmodel extends DModel {
     //     return $this->db->select($sql, $data);
     // }
 
+    public function userbyid($table_users, $id) {
+        if (!is_numeric($id)) {
+            throw new Exception("Invalid ID");
+        }
+        $sql = "SELECT users.full_name, users.email, users.phone 
+                FROM $table_users 
+                WHERE $table_users.user_id = :id";
+        $data = [':id' => $id];
+    
+        // Debug
+        $result = $this->db->select($sql, $data);
+        if (empty($result)) {
+            die("Không có thông tin người dùng trong database.");
+        }
+    
+        return $result;
+    }
+
     public function jobbyid($table_jobs, $id) {
         if (!is_numeric($id)) {
             throw new Exception("Invalid ID");

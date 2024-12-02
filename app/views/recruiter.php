@@ -39,7 +39,7 @@
             }
         ?>
             <?php 
-            include_once 'personal_info_recruiter.php';
+                require_once 'personal_info_recruiter.php';
             ?>
             <div id="dashboard" class="profile-section">
                 <div class="header">

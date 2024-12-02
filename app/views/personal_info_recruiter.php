@@ -23,18 +23,24 @@
             </label>
         </div>
         <form action="#" method="POST" class="form_basic_info">
+            <?php
+                    foreach($userbyid as $key => $value) {
+            ?>
             <div class="form-group">
                 <label for="name">Họ và tên *</label>
-                <input type="text" id="name" name="name" placeholder="Họ và tên">
+                <input type="text" id="name" name="name" placeholder="Họ và tên" value="<?php echo $value['full_name'] ?>">
             </div>
             <div class="form-group">
                 <label for="phone">Số điện thoại *</label>
-                <input type="text" id="phone" name="phone" placeholder="Số điện thoại">
+                <input type="text" id="phone" name="phone" placeholder="Số điện thoại" value="<?php echo $value['phone'] ?>">
             </div>
             <div class="form-group">
                 <label for="email">Email *</label>
-                <input type="email" id="email" name="email" placeholder="Địa chỉ email">
+                <input type="email" id="email" name="email" placeholder="Địa chỉ email" value="<?php echo $value['email'] ?>">
             </div>
+            <?php
+                }
+            ?>
         </form>
     
         <!-- Company Information -->

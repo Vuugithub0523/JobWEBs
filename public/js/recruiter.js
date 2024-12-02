@@ -22,7 +22,7 @@
        document.getElementById("personal-info").style.display = "none";
        document.getElementById("job-list").style.display = "none";
     //    document.getElementById('applicant-list').style.display = 'none';
-       document.getElementById('applicant-detail').style.display = 'none';
+    //    document.getElementById('applicant-detail').style.display = 'none';
        document.getElementById('create-job-form1').style.display = 'none';
        document.getElementById('create-job-form2').style.display = 'none';
        document.getElementById('create-job-form3').style.display = 'none';
@@ -32,7 +32,7 @@
        document.getElementById("personal-info").style.display = "block";
        document.getElementById("job-list").style.display = "none";
     //    document.getElementById('applicant-list').style.display = 'none';
-       document.getElementById('applicant-detail').style.display = 'none';
+    //    document.getElementById('applicant-detail').style.display = 'none';
        document.getElementById('create-job-form1').style.display = 'none';
        document.getElementById('create-job-form2').style.display = 'none';
        document.getElementById('create-job-form3').style.display = 'none';
@@ -43,7 +43,7 @@
        document.getElementById("personal-info").style.display = "none";
        document.getElementById("job-list").style.display = "block";
     //    document.getElementById('applicant-list').style.display = 'none';
-       document.getElementById('applicant-detail').style.display = 'none';
+    //    document.getElementById('applicant-detail').style.display = 'none';
        document.getElementById('create-job-form1').style.display = 'none';
        document.getElementById('create-job-form2').style.display = 'none';
        document.getElementById('create-job-form3').style.display = 'none';
