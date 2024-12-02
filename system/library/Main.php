@@ -4,7 +4,6 @@ class Main {
 
     public $url;
 
-    // public $controllerName = 'index';
     public $controllerName = 'homepage';
 
     public $methodName = 'index';
@@ -97,7 +96,7 @@ class Main {
                 $this->controller->{$methodName}();
             }
         } else {
-            header("Location: " . BASE_URL . "index/notfound");
+                    header("Location: " . BASE_URL . "error/notfound");
+                }
         }
-    }
 }
