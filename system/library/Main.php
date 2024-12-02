@@ -4,7 +4,9 @@ class Main {
 
     public $url;
 
-    public $controllerName = 'index';
+    //public $controllerName = 'index';
+
+    public $controllerName = 'homepage';
 
     public $methodName = 'index';
     public $controllerPath = 'app/controllers/';

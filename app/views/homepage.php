@@ -684,7 +684,7 @@
             <div class="headline-homepage-explore">
                 <h2>Khám phá theo <span>danh mục</span></h2>
                 <a href="#">
-                    <p>Hiển thị tất cả công việc</p>
+                    <p>Hiển thị tất cả công việc</p>    
                     <ion-icon name="arrow-forward-outline"></ion-icon>
                 </a>
             </div>
@@ -692,32 +692,29 @@
             <div class="content-homepage-explore">
                 <div class="grid-content-homepage-explore">
                     <?php
-                    // Lấy danh sách ngành nghề
-                    $industries = $this->getIndustries();
-
-                    // Kiểm tra xem $industries có phải là mảng và không rỗng không
-                    if (is_array($industries) && !empty($industries)) {
-                        // Lặp qua mảng ngành nghề
-                        foreach ($industries as $industry) {
-                            // Lấy số lượng công việc cho từng ngành
-                            $jobCount = $this->getIndustryJobCount($industry['industry_name']);
-
-                            echo '<a href="#">';
-                            echo '    <div class="icon"><i class="fa-solid fa-pencil"></i></div>';
-                            echo '    <div class="homepage-explore-name">';
-                            echo '        <h4>' . htmlspecialchars($industry['industry_name']) . '</h4>';
-                            echo '        <div class="homepage-explore-link">';
-                            echo '            <p>' . $jobCount[0]['job_count'] . ' jobs available</p>';
-                            echo '            <ion-icon name="arrow-forward-outline"></ion-icon>';
-                            echo '        </div>';
-                            echo '    </div>';
-                            echo '</a>';
+                        // Kiểm tra xem biến $industries có tồn tại và không rỗng
+                        if (isset($industries) && !empty($industries)) {
+                            foreach ($industries as $industry) {
+                    ?>
+                                <a href="#">
+                                    <div class="icon">
+                                        <i class="fa-solid fa-pen-nib"></i>
+                                    </div>
+                                    
+                                    <div class="homepage-explore-name">
+                                        <h4><?php echo htmlspecialchars($industry['industry_name']); ?></h4> <!-- Hiển thị tên ngành -->
+                                        <div class="homepage-explore-link">
+                                            <p><?php echo $industry['job_count']; ?> jobs available</p> <!-- Hiển thị số lượng công việc -->
+                                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                                        </div>
+                                    </div>
+                                </a>
+                    <?php
+                            }
+                        } else {
+                            echo "No industries available"; // Nếu không có ngành nào
                         }
-                    } else {
-                    echo "Không có dữ liệu ngành.";
-                    }
-
-                ?>
+                    ?>
                 </div>
             </div>
         </div>
