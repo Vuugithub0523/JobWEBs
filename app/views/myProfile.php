@@ -12,15 +12,15 @@
 <div class="container-myProfile">
         <div class="sidebar">
             <div class="top-sidebar">
-                <a href="<?php echo BASE_URL; ?>/homepage/index" style="text-decoration: none; color: black;"><h3>JobFunny</h3></a>
+                <a href="<?php echo BASE_URL; ?>" style="text-decoration: none; color: black;"><h3>JobFunny</h3></a>
                 
                 <ul>
                     <!-- <li><a href="#"><i style="padding-left: 10px;" class="fa-solid fa-house"></i> Trang chủ</a></li>
                     <li><a href="#"><i style="padding-left: 14px;" class="fa-solid fa-file"></i> Đơn ứng tuyển của tôi</a></li>
                     <li><a href="#"><i style="padding-left: 12px;" class="fa-solid fa-user"></i> Hồ sơ của tôi</a></li> -->
 
-                    <li><a href="<?php echo BASE_URL; ?>/homepage/index"><i style="padding-left: 10px;" class="fa-solid fa-house"></i> Trang chủ</a></li>
-                    <li><a href="<?php echo BASE_URL; ?>/myApplications/index"><i style="padding-left: 14px;" class="fa-solid fa-file"></i> Đơn ứng tuyển của tôi</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>"><i style="padding-left: 10px;" class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/myApplications"><i style="padding-left: 14px;" class="fa-solid fa-file"></i> Đơn ứng tuyển của tôi</a></li>
                     <li><a href="<?php echo BASE_URL; ?>/myProfile/myProfile"><i style="padding-left: 12px;" class="fa-solid fa-user"></i> Hồ sơ của tôi</a></li>
                 </ul>
             </div>
@@ -51,7 +51,7 @@
             <div class="myProfile">
                 <div class="header-myProfile">
                     <h2>Hồ sơ của tôi</h2>
-                    <a href="<?php echo BASE_URL; ?>/homepage/index" style="text-decoration: none;"><button>Quay lại trang chủ</button></a>
+                    <a href="<?php echo BASE_URL; ?>" style="text-decoration: none;"><button>Quay lại trang chủ</button></a>
                     
                 </div>
 

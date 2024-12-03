@@ -230,33 +230,3 @@ body {
     border: 2px solid #DC3545;
     color: #DC3545; 
 }
-
-.pagination {
-    text-align: center;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-}
-
-.pagination button {
-    padding: 8px 12px;
-    margin: 0;
-    border: 1px solid #D6DDEB;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.pagination button:hover {
-    background-color: #f0f4ff;
-    color: #4640DE;
-}
-
-.pagination button.active {
-    background-color: #4640DE;
-    color: white;
-    font-weight: bold;
-}
