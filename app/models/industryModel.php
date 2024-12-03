@@ -29,7 +29,7 @@ class industryModel extends DModel {
     
 
     public function getIndustries() {
-        $sql = "SELECT industry_id, industry_name FROM industry";
+        $sql = "SELECT industry_id, industry_name FROM industry order by industry_name limit 8";
     return $this->db->select($sql); // Trả về mảng các ngành
     }
 
@@ -44,7 +44,10 @@ class industryModel extends DModel {
     public function countJobsByIndustry($industry_id) {
         $sql = "SELECT COUNT(*) AS total_jobs
                 FROM jobs
-                WHERE industry_id = :industry_id";
+                join users on jobs.user_id = users.user_id
+                join companies on users.user_id = companies.user_id
+                join industry on companies.industry_id = industry.industry_id
+                WHERE industry.industry_id = :industry_id";
         $data = [':industry_id' => $industry_id]; // Dữ liệu cần truyền vào
         $result = $this->db->select($sql, $data); // Thực hiện truy vấn
         return $result ? $result[0]['total_jobs'] : 0; // Trả về số lượng công việc

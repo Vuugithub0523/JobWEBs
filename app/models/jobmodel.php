@@ -43,14 +43,27 @@ class jobmodel extends DModel {
                 ";
         return $this->db->select($sql);
     }
-     
-    // public function jobbyid($table_jobs, $id) {
-    //     $sql = "select * from " . $table_jobs . " where job_id =:id";
-    
-    //     $data = array(':id' => $id);
-    
-    //     return $this->db->select($sql, $data);
-    // }
+
+    public function topnewjob($table_jobs) {
+        $sql = "SELECT *
+                FROM jobs
+                ORDER BY posted_date DESC
+                LIMIT 8;
+                ";
+        return $this->db->select($sql);
+    }
+    public function getJobs() {
+        $sql = "
+            select jobs.job_title, companies.company_name, companies.company_address, companies.logo, job_type.job_type_name
+            from jobs
+            join job_type on jobs.job_type_id = job_type.job_type_id
+            join users on jobs.user_id = users.user_id
+            join companies on users.user_id = companies.user_id
+            order by jobs.posted_date desc
+            limit 8
+        ";
+        return $this->db->select($sql);
+    }
 
     public function jobbyid($table_jobs, $id) {
         if (!is_numeric($id)) {

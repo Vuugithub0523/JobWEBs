@@ -32,6 +32,11 @@ class homepage extends DController {
         // Truyền dữ liệu ngành vào view
         $data['industries'] = $industries;
 
+         // Gọi hàm getJobs để lấy danh sách 8 công việc mới nhất và tên công ty tương ứng
+         $jobModel = $this->load->model('jobModel');
+         $getJobs = $jobModel->getJobs(); // Truyền tên bảng jobs và companies vào hàm
+         $data['getJobs'] = $getJobs; // Truyền danh sách công việc và công ty vào view
+
         // Load view homepage và truyền dữ liệu ngành
         $this->load->view('homepage', $data);
     }

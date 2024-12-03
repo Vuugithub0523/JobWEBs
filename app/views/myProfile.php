@@ -346,7 +346,7 @@ select {
 
                 <div class="account-bottom-sidebar">
                     <div class="img-account">
-                        <img src="https://i.pinimg.com/originals/6f/d6/1f/6fd61fe74b3851261242655f07cd0259.jpg" alt="avt-account">
+                        <img src="../../public/img/avt1-applicant.webp" alt="avt-account">
                     </div>
 
                     <div class="info-account">
@@ -384,7 +384,7 @@ select {
                         </div>
 
                         <div class="middle-avatar-content-myProfile">
-                            <img src="https://i.pinimg.com/originals/6f/d6/1f/6fd61fe74b3851261242655f07cd0259.jpg" alt="avatar_account">
+                            <img src="../../public/img/avt1-applicant.webp" alt="avatar_account">
                         </div>
 
                         <div class="right-avatar-content-myProfile">

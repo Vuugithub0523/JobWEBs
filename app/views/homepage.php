@@ -220,7 +220,7 @@
 }
 
 .headline-homepage-explore {
-    padding: 15px 0;
+    padding: 15px 0 25px 0;
     display: flex;
     justify-content: space-between;
 }
@@ -308,19 +308,19 @@
 
 .homepage-cta {
     background-color: var(--neutral--0);
-    padding-top: 72px;
-    padding-bottom: 72px;
+    padding-top: 60px;
+    padding-bottom: 100px;
     position: relative;
     overflow: hidden;
     /* background-color: pink; */
 }
 
 .homepage-cta-container {
-    margin: 0 110px;
+    margin: 0 170px;
     z-index: 10;
     max-width: 1240px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 50px;
+    padding-right: 50px;
     position: relative;
     background-color: #4640DE;
 }
@@ -408,8 +408,8 @@
 }
 
 .lastest-jobs {
-    padding-top: 72px;
-    padding-bottom: 72px;
+    padding-top: 50px;
+    padding-bottom: 90px;
     position: relative;
     overflow: hidden;
     background-color: #F8F8FD;
@@ -500,11 +500,12 @@
     margin: 12px 0 10px 0;
 }
 
-.tag-full-time, .tag-part-time {
-    width: 50px;
-    padding: 10px 15px 10px 15px;
+.tag-full-time, .tag-part-time, .tag-internship {
+    /* width: 100px; */
+    padding: 11px 20px 11px 20px;
     border-radius: 25px;
     margin-right: 15px;
+    text-transform: capitalize;
 }
 
 .tag-full-time {
@@ -515,6 +516,11 @@
 .tag-part-time {
     background-color: rgb(243, 243, 255);
     color:rgb(98, 98, 160)
+}
+
+.tag-internship {
+    background-color: #FFEECD;
+    color: #FFB836;
 }
 
 
@@ -682,7 +688,7 @@
     <div class="homepage-explore">
         <div class="homepage-explore-container">
             <div class="headline-homepage-explore">
-                <h2>Khám phá theo <span>danh mục</span></h2>
+                <h2>Khám phá theo <span>danh mục nổi bật</span></h2>
                 <a href="#">
                     <p>Hiển thị tất cả công việc</p>    
                     <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -749,110 +755,36 @@
                 </a>
             </div>
             <div class="content">
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
+            <?php if (!empty($getJobs)): ?>
+                <?php foreach ($getJobs as $job): ?>
+                    <a href="<?php echo BASE_URL; ?>jobDescription" class="job-card">
+                        <div class="job-logo">
+                            <img src="<?php echo $job['logo']; ?>" alt="Logo">
                         </div>
-                    </div>
-                    
-                </a>
-    
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
+
+                        <div class="infor-job-card">
+                            <h3><?php echo $job['job_title']; ?></h3>
+                            <p><?php echo $job['company_name']; ?> 
+                                <span>• <?php echo isset($job['company_address']) ? $job['company_address'] : 'Chưa xác định'; ?></span>
+                            </p>
+                            <div class="job-tags">
+                                
+                                <!-- <span class="tag-part-time">Part-Time</span> -->
+                                 
+                                <?php if ($job['job_type_name'] == 'fulltime'): ?>
+                                    <span class="tag-full-time"><?php echo $job['job_type_name']; ?> </span>
+                                <?php elseif ($job['job_type_name'] == 'parttime'): ?>
+                                    <span class="tag-part-time"><?php echo $job['job_type_name']; ?> </span>
+                                <?php else: ?>
+                                    <span class="tag-internship"><?php echo $job['job_type_name']; ?> </span>
+                                    <?php endif; ?>
+                            </div>
                         </div>
-                    </div>
-                </a>
-    
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
-                        </div>
-                    </div>
-                </a>
-    
-                <a href="#" class="job-card">
-                    <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                    
-                    <div class="infor-job-card">
-                        <h3>Social Media Assistant</h3>
-                        <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                        <div class="job-tags">
-                            <span class="tag-full-time">Full-Time</span>
-                            <span class="tag-part-time">Part-Time</span>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No new jobs found.</p>
+            <?php endif; ?>
             </div>
         </div>
     </div>
