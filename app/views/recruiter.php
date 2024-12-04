@@ -55,7 +55,7 @@
                 <div class="dashboard-stats">
                     <div class="stat-item posted">
                         <h3>Tổng số lượng công việc đã đăng</h3>
-                        <?php echo "<p id='total_jobs'>" . $value['total_jobs']. "</p>"; ?>
+                        <?php echo "<p id='total_jobs'>" . $value['total_jobs_posted']. "</p>"; ?>
                     </div>
                     <div class="stat-item denied">
                         <h3>Số lượng công việc từ chối</h3>
@@ -78,8 +78,8 @@
                     <?php
                     foreach($userbyid as $key => $value) {
                     ?>
-                    <p><strong>Tên:</strong> <span id="company-name"><?php echo $value['company_name']; ?></span></p>
-                    <p><strong>Địa chỉ:</strong> <span id="company-address"><?php echo $value['company_address']; ?></span></p>
+                    <p><strong>Tên:</strong> <span id="company-name"><?php echo $value['comp_name']; ?></span></p>
+                    <p><strong>Địa chỉ:</strong> <span id="company-address"><?php echo $value['comp_address']; ?></span></p>
                     <p><strong>Ngày thành lập:</strong> <span id="company-founded"><?php echo isset($value['founded_date']) && $value['founded_date'] !== null ? $value['founded_date'] : "Chưa cập nhật"; ?></span></p>
                     <p><strong>Số lượng nhân viên:</strong> <span id="company-employees"><?php echo isset($value['employee_count']) && $value['employee_count'] !== null ? $value['employee_count'] : "Chưa cập nhật"; ?></span></p>
                     <?php
@@ -94,7 +94,7 @@
                     <?php 
                         foreach($topthreejob as $key => $value) {
                     ?>
-                    <?php echo "<li><strong>" .$value['job_title'] . "</strong> - Deadline: <span>".  $value['deadline']. "</span></li>" ?>
+                    <?php echo "<li><strong>" .$value['job_title'] . "</strong> - Deadline: <span>".  $value['job_deadline']. "</span></li>" ?>
                     <?php
                         }
                     ?>
