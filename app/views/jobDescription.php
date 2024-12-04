@@ -4,574 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Tiết Công Việc</title>
-    <link rel="stylesheet" href="jobDescriptions.css">
+    <link rel="stylesheet" href="public/css/jobDescription.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Calistoga&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<style>
-    /* Tổng quan */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-}
-
-/* Header */
-.job-header {
-    position: fixed;
-    width: 100vw;
-    height: 70px;
-    z-index: 1000;
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.job-header img {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    object-fit: cover;
-    top: 15px;
-    left: 100px;
-}
-
-.job-header span {
-    position: absolute;
-    top: 22px;
-    left: 155px;
-    font-size: 26px;
-    font-weight: bold;
-}
-
-.job-header a {
-    position: absolute;
-    top: 27px;
-    left: 345px;
-    font-size: 16px;
-    text-decoration: none;
-    color: #5e5b5b;
-}
-
-
-.job-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.job-details .job-overview {
-    margin-top: 71px;
-    width: 99vw;
-    height: 220px;
-    background-color: #F8F8FD;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.job-summary {
-    width: 80vw;
-    height: 110px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.left-job-summary {
-    display: flex;
-    gap: 15px;
-    width: 45%;
-    height: 60px;
-    background-color: rgb(255, 255, 255);
-    margin-left: 25px;
-}
-
-.left-job-summary img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-}
-
-.left-job-summary .info-job-summary {
-    display: flex;
-    flex-direction: column;
-}
-
-.left-job-summary .info-job-summary h2 {
-    margin: 5px;
-    font-size: 19px;
-}
-
-.left-job-summary .info-job-summary p {
-    margin: 5px;
-    font-size: 15px;
-    color: #5e5b5b;
-}
-
-.right-job-summary {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    background-color: white;
-    width: 15%;
-    height: 60px;
-    margin-right: 25px;
-}
-
-/* .right-job-summary i {
-    font-size: 20px;
-    color: #c3c3c3;
-}
-
-.right-job-summary .behind-line {
-    width: 1px;
-    height: 45px;
-    background-color: #5e5b5b;
-} */
-
-.right-job-summary button {
-    margin-right: 10px;
-    width: 120px;
-    height: 50px;
-    background-color: rgb(80, 80, 242);
-    border: none;
-    font-weight: bold;
-    color: white;
-}
-
-.job-benefits {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 150px;
-    width: 80vw;
-    height: 350px;
-}
-
-.job-benefits .intro-job-benefits {
-    width: 100%;
-    height: 140px;
-}
-
-.job-benefits .intro-job-benefits h2 {
-    margin: 50px 0 10px 0;
-    font-size: 26px;
-    font-weight: lighter;
-}
-
-.job-benefits .intro-job-benefits span {
-    color: #5e5b5b;
-    font-weight: lighter;
-    font-size: 17px;
-}
-
-.details-job-benefits {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 210px;
-}
-
-.left-job-details-benefits {
-    width: 31%;
-    height: 190px;
-}
-
-.left-job-details-benefits i {
-    font-size: 35px;
-    color: #4640DE;
-}
-
-.left-job-details-benefits h3 {
-    font-weight: lighter;
-    width: 270px;
-    font-size: 22px;
-    margin: 25px 0px 15px 0px;
-}
-
-.left-job-details-benefits p {
-    font-size: 16px;
-    color: #5e5b5b;
-}
-
-.middle-job-details-benefits {
-    width: 31%;
-    height: 190px;
-}
-
-.middle-job-details-benefits i {
-    font-size: 35px;
-    color: #4640DE;
-}
-
-.middle-job-details-benefits h3 {
-    font-weight: lighter;
-    width: 270px;
-    font-size: 22px;
-    margin: 25px 0px 15px 0px;
-}
-
-.middle-job-details-benefits p {
-    font-size: 16px;
-    color: #5e5b5b;
-}
-
-.right-job-details-benefits {
-    width: 31%;
-    height: 190px;
-}
-
-.right-job-details-benefits i {
-    font-size: 35px;
-    color: #4640DE;
-}
-
-.right-job-details-benefits h3 {
-    font-weight: lighter;
-    width: 270px;
-    font-size: 22px;
-    margin: 25px 0px 15px 0px;
-}
-
-.right-job-details-benefits p {
-    font-size: 16px;
-    color: #5e5b5b;
-}
-
-.job-description {
-    margin-top: 50px;
-    width: 55vw;
-}
-
-.details-job-description {
-    margin-bottom: 30px;
-}
-
-.details-job-description h2 {
-    font-size: 26px;
-    font-weight: lighter;
-    margin: 15px 0 10px 0;
-}
-
-.details-job-description p {
-    font-size: 16px;
-    color: #5e5b5b;
-}
-
-.details-job-description p span {
-    color: #56CDAD;
-    margin-right: 5px;
-}
-
-.company-info {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 145px;
-    align-items: center;
-    /* width: 99vw; */
-    height: 370px;
-    border-top: 1px solid #c8c8c8;
-}
-
-.company-description{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    height: 170px;
-}
-
-
-.top-company-description {
-    height: 35%;
-    display: flex;
-}
-
-.top-company-description img {
-    width: 60px; 
-    height: 60px;
-}
-
-.moreInfo-company {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.moreInfo-company h3 {
-    margin: 0;
-    margin-left: 15px;
-    font-weight: lighter;
-    font-size: 26px;
-}
-
-.moreInfo-company a {
-    margin: 0;
-    margin-left: 15px;
-    font-weight: bold;
-    color: #4640DE;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.bottom-company-description {
-    margin-top: 10px;
-    font-size: 15px;
-    color: #515B6F;
-}
-
-.company-images {
-    display: flex;
-    justify-content: space-between;
-    width: 45%;
-    height: 270px;
-}
-
-.company-images .main-company-images {
-    object-fit: cover;
-    width: 300px;
-    height: 270px;
-    margin-left: 50px;
-}
-
-.small-company-images {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.small-company-images img {
-    object-fit: cover;
-    width: 170px;
-    height: 130px;
-}
-
-.similar-jobs {
-    width: 99vw;
-    height: auto;
-    background-color: #F8F8FD;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 70px;
-}
-
-.similar-jobs .header-similar-jobs {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 130px;
-    background-color: #F8F8FD;
-}
-
-.similar-jobs .header-similar-jobs h2, a {
-    margin: 0 150px;
-}
-
-.similar-jobs .header-similar-jobs h2 {
-    font-weight: lighter;
-    font-size: 26px;
-}
-
-.similar-jobs .header-similar-jobs a {
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    color: #4640DE;
-}
-
-.similar-jobs .header-similar-jobs a i{
-    margin-left: 10px;
-}
-
-.similar-jobs .job-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 48%);
-    row-gap: 30px;
-    column-gap: 50px;
-    margin: 0 150px;
-}
-
-.job-grid .job-card {
-    padding: 15px 0;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.job-card .job-logo {
-    margin: 0px 60px;
-}
-
-.job-card .job-logo img {
-    width: 60px;
-    margin-bottom: 20px;
-}
-
-.job-card .infor-job-card {
-    margin-right: 230px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.job-card .infor-job-card h3 {
-    width: 300px;
-    font-size: 20px;
-    margin: 10px 0 7px 0;
-}
-
-.job-card .infor-job-card p {
-    font-size: 16px;
-    margin: 7px 0;
-}
-
-.job-card .infor-job-card .job-tags {
-    font-size: 16px;
-    margin: 12px 0 10px 0;
-}
-
-.tag-full-time, .tag-part-time {
-    width: 50px;
-    padding: 10px 15px 10px 15px;
-    border-radius: 25px;
-    margin-right: 15px;
-}
-
-.tag-full-time {
-    background-color: #EEFAF7;
-    color: #56CDAD;
-}
-
-.tag-part-time {
-    background-color: rgb(243, 243, 255);
-    color:rgb(98, 98, 160)
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 99vw;
-    height: 400px;
-    background-color: black;
-}
-
-.footer-container {
-    width: 80.2%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-small1-container, .footer-small2-container {
-    width: 100%;
-}
-
-.footer-small1-container {
-    color: white;
-    display: flex;
-    gap: 60px;
-    height: 80%;
-    padding-bottom: 30px;
-}
-
-.footer-small1-container h4 {
-    font-size: 18px;
-}
-
-.footer-small1-container p {
-    margin: 15px 0;
-    
-}
-
-.intro-small-container {
-    width: 565px;
-}
-
-.intro-small-container p {
-    line-height: 1.5;
-}
-
-
-.category-small-container {
-    width: 140px;
-}
-
-.resources-small-container {
-    width: 140px;
-}
-
-.notifications-small-container {
-    width: 100px;
-}
-
-.notifications-small-container, input {
-    height: 35px; 
-    width: 280px; 
-    border: none;
-}
-
-.notifications-small-container, button {
-    height: 37px; 
-    width: 100px; 
-    border: none; 
-    margin-left: 10px; 
-    border-radius: 7px; 
-    background-color: #4640DE; 
-    color: white;
-}
-
-.footer-small2-container {
-    padding-top: 30px;
-    border-top: 1px solid #4A4E58;
-    height: 20%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.footer-small2-container p {
-    color: #8F9197;
-}
-
-.footer-small2-container .icon-footer {
-    display: flex; 
-    gap: 10px;
-    padding-top: 5px;
-    justify-content: space-between;
-    width: 200px;
-}
-
-.footer-small2-container i {
-    display: flex;               
-    justify-content: center; 
-    align-items: center;
-    color: white;
-    width: 35px;
-    height: 35px;
-    border-radius: 20px;
-    background-color: #4A4E58;
-}
-
-/* */
-</style>
-
 <body>
     <!-- Header -->
     <div class="job-header">
-        <img src="https://th.bing.com/th/id/OIP.nENBwk5XIZwapRzUo_7VWQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" alt="Stripe">
+        <img src="https://th.bing.com/th/id/OIP.nENBwk5XIZwapRzUo_7VWQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" alt="JobFunny">
         <span>JobFunny</span>
 
         <a href="#">Tìm việc</a>
@@ -587,10 +31,10 @@ body {
         <div class="job-overview">
             <div class="job-summary">
                 <div class="left-job-summary">
-                    <img src="https://th.bing.com/th/id/OIP.nENBwk5XIZwapRzUo_7VWQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" alt="logo-company">
+                    <img src="<?php echo $job['logo'] ?>" alt="logo-company">
                     <div class="info-job-summary">
-                        <h2>Social Media Assistant</h2>
-                        <p>Stripe • Paris, France • Full-Time</p>
+                        <h2><?php echo $job['job_title'] ?></h2>
+                        <p><?php echo $job['company_name'] ?> • <?php echo $job['company_address'] ?> • <?php echo $job['job_type_name'] ?></p>
                     </div>
                 </div>
 
@@ -600,13 +44,6 @@ body {
                     <button class="btn-apply">Nộp</button>
                 </div>
             </div>
-
-            <!-- <h1>Social Media Assistant</h1>
-            <p>Stripe • Paris, France • Full-Time</p>
-            <div class="job-actions">
-                <button class="btn-apply">Nộp</button>
-                <i class="fas fa-share-alt"></i>
-            </div> -->
         </div>
 
         <!-- Benefits -->
@@ -692,11 +129,11 @@ body {
     <div class="company-info">
         <div class="company-description">
             <div class="top-company-description">
-                <img src="https://th.bing.com/th/id/OIP.nENBwk5XIZwapRzUo_7VWQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" alt="Stripe">
+                <img src="<?php echo $job['logo'] ?>" alt="logo_company">
 
                 <div class="moreInfo-company">
-                    <h3>Stripe</h3>
-                    <a href="#" class="read-more">Đọc thêm về Stripe <i class="fas fa-arrow-right"></i></a>
+                    <h3><?php echo $job['company_name'] ?></h3>
+                    <a href="#" class="read-more">Đọc thêm về <?php echo $job['company_name'] ?> <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -716,116 +153,43 @@ body {
 
     <!-- Similar Jobs -->
     <div class="similar-jobs">
+        <div class="similar-job-container">
         <div class="header-similar-jobs">
-            <h2>Similar Jobs</h2>
+            <h2>Những công việc <span>tương tự</span></h2>
             <a href="#" class="show-more-jobs">Hiển thị tất cả công việc <i class="fas fa-arrow-right"></i></a>
         </div>
     
         <div class="job-grid">
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
+            <?php if (!empty($similarJobs)): ?>
+                <?php foreach ($similarJobs as $similarJob): ?>
+                <a href="#" class="job-card">
+                <div class="job-logo">
+                    <img src="<?php echo $similarJob['logo']; ?>" alt="Logo">
+                </div>
                 <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
+                    <h3><?php echo $similarJob['job_title']; ?></h3>
+                    <p><?php echo $similarJob['company_name']; ?>
+                        <span>• <?php echo isset($similarJob['company_address']) ? $similarJob['company_address'] : 'Chưa xác định'; ?></span>
+                    </p>
                     <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
+                        <?php if ($similarJob['job_type_name'] == 'fulltime'): ?>
+                            <span class="tag-full-time"><?php echo $similarJob['job_type_name']; ?></span>
+                        <?php elseif ($similarJob['job_type_name'] == 'parttime'): ?>
+                            <span class="tag-part-time"><?php echo $similarJob['job_type_name']; ?></span>
+                        <?php else: ?>
+                            <span class="tag-internship"><?php echo $similarJob['job_type_name']; ?></span>
+                        <?php endif; ?>
                     </div>
                 </div>
-                
-            </div>
-
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
-                <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                    <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
-                <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                    <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
-                <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                    <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
-                <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                    <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
-                <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                    <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
-                <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                    <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="job-logo"><img src="https://via.placeholder.com/50" alt="Logo"></div>
-                
-                <div class="infor-job-card">
-                    <h3>Social Media Assistant</h3>
-                    <p>Nomad <span>• Sơn Trà, Đà Nẵng</span></p>
-                    <div class="job-tags">
-                        <span class="tag-full-time">Full-Time</span>
-                        <span class="tag-part-time">Part-Time</span>
-                    </div>
-                </div>
-            </div>
+                </a>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No similar jobs found.</p>
+        <?php endif; ?>
+        </div>
+    </div>
+</div>
+        </div>
         </div>
     </div>
 
