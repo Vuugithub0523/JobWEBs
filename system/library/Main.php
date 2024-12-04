@@ -95,7 +95,7 @@ class Main {
                 $this->controller->{$methodName}();
             }
         } else {
-                header("Location: " . BASE_URL . "error/notfound");
+                header("Location: " . BASE_URL . "index/notfound");
         }
     }
 }
