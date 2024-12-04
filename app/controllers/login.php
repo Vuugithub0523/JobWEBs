@@ -14,7 +14,7 @@ class login extends DController{
                     $_SESSION['current']=$value;
                     if($value['role']==3){
                         //link đến trang chủ mặc định
-                        header('Location: ../z-Demo');
+                        header('Location: http://localhost/job_finder_website/');
                         exit();
                     }else if($value['role']==2){
                         header('Location: ../z-Demo');

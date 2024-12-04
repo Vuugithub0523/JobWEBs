@@ -23,7 +23,7 @@
     .rg-left{
         width:40%;
         height:100%;
-        background-image:url(public/img/log.png);
+        background-image:url(../public/img/log.png);
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;
@@ -268,7 +268,7 @@ if(isset($industry)){
                 </div>
             </form>
             <?php endif ;?>
-            <div class="rg-field1">Bạn đã có tài khoản?&nbsp<a href="?url=login/login">Đăng nhập</a></div>
+            <div class="rg-field1">Bạn đã có tài khoản?&nbsp<a href="http://localhost/job_finder_website/login/login">Đăng nhập</a></div>
         </div><!--body-->
     </div><!-- rg-right-->
 </div><!--container-->

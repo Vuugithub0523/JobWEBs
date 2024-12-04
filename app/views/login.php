@@ -23,7 +23,7 @@
     .rg-left{
         width:40%;
         height:100%;
-        background-image:url(public/img/log.png);
+        background-image:url(../public/img/log.png);
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;
@@ -169,7 +169,7 @@
                 </div>
                 <button type="submit" class="rg-button1" name="logIn">Đăng Nhập</button>
             </form>
-            <div class="rg-field1">Bạn chưa có tài khoản? &nbsp<a href="?url=register/registerUser" >Đăng ký</a></div>
+            <div class="rg-field1">Bạn chưa có tài khoản? &nbsp<a href="http://localhost/job_finder_website/register/registerUser" >Đăng ký</a></div>
         </div><!--body right-->
     </div><!-- rg-right-->
 </div><!--container-->

@@ -230,7 +230,7 @@
         window.location.href = "http://localhost/job_finder_website/login/login";
     });
     registerBtn.addEventListener('click', function () {
-        window.location.href = "http://localhost/job_finder_website/login/login?url=register/registerUser";
+        window.location.href = "http://localhost/job_finder_website/register/registerUser";
     }
     );
 </script>

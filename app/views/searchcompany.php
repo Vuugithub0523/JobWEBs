@@ -282,7 +282,7 @@ if(isset($data)&&$data){
             } 
             sessionStorage.setItem('filter_indus', JSON.stringify(object));
             displayColorFilterInd();
-            fetch('public/ajax/refreshCompanies.php', {
+            fetch('http://localhost/job_finder_website/public/ajax/refreshCompanies.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(getSessionStorage('filter_indus'))
@@ -327,7 +327,7 @@ if(isset($data)&&$data){
                     object.b=parseInt(size.value);
                 }
                 sessionStorage.setItem('filter_indus', JSON.stringify(object));
-                fetch('public/ajax/refreshCompanies.php', {
+                fetch('http://localhost/job_finder_website/public/ajax/refreshCompanies.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(getSessionStorage('filter_indus'))
@@ -355,7 +355,7 @@ if(isset($data)&&$data){
         })
     })
     //Load khi tải lại trang
-    fetch('public/ajax/refreshCompanies.php', {
+    fetch('http://localhost/job_finder_website/public/ajax/refreshCompanies.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(getSessionStorage('filter_indus'))
@@ -363,7 +363,7 @@ if(isset($data)&&$data){
     .then(response => response.text())
     .then(data => {
         try {
-            console.log(data);
+           // console.log(data);
             let jsonData = JSON.parse(data);
             listCompanyCurrent=jsonData;
             current_page=1;
@@ -387,7 +387,7 @@ if(isset($data)&&$data){
         let object=getSessionStorage('filter_indus');
         object.c=inputS.value;
         sessionStorage.setItem('filter_indus', JSON.stringify(object));
-        fetch('public/ajax/refreshCompanies.php', {
+        fetch('http://localhost/job_finder_website/public/ajax/refreshCompanies.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(getSessionStorage('filter_indus'))
@@ -468,7 +468,7 @@ if(isset($data)&&$data){
                 var numJoC=listJoC.length;
                 boxListC.innerHTML +=
                 `
-                <a href="?url=companydetail/companydetail/${com.comp_name}">
+                <a href="?http://localhost/job_finder_website/companydetail/companydetail/${com.comp_name}">
                     <div class="company-card">
                         <img src="stripe-logo.png" alt="Stripe" class="company-logo">
                         <div class="company-info">
