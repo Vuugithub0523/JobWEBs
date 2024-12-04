@@ -6,7 +6,7 @@ class applicationModel extends DModel {
         parent::__construct();
     }
     public function application($user_id) {
-        $sql = "select companies.comp_logo as comp_logo, companies.*, jobs.job_title, applications.* 
+        $sql = "select companies.comp_logo as comp_logo, companies.*, jobs.job_title, applications.*, applications.application_status as application_status
                 from applications
                 join jobs on applications.job_id = jobs.job_id
                 join users on jobs.user_id = users.user_id

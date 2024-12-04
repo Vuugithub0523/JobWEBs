@@ -33,7 +33,7 @@
 
                 <div class="account-bottom-sidebar">
                     <div class="img-account">
-                        <img src="<?php echo $user[0]['avatar']; ?>" alt="avt-account">
+                        <img src="../public/img/<?php echo $user[0]['avatar']; ?>" alt="avt-account">
                     </div>
 
                     <div class="info-account">
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="middle-avatar-content-myProfile">
-                            <img src="<?php echo $user[0]['avatar']; ?>" alt="avatar_account">
+                            <img src="../public/img/<?php echo $user[0]['avatar']; ?>" alt="avatar_account">
                         </div>
 
                         <div class="right-avatar-content-myProfile">
