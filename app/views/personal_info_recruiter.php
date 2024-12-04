@@ -10,7 +10,13 @@
         <div class="avatar-container">
         <!-- Avatar Display -->
             <div class="avatar">
-                <img src="https://via.placeholder.com/100" alt="Avatar" id="avatarImage">
+            <?php
+                    foreach($userbyid as $key => $value) {
+            ?>
+                <img src="../public/img/<?php echo $value['avatar'] ?>" alt="Avatar" id="avatarImage">
+            <?php
+                    }
+            ?>
             </div>
 
             <!-- Upload Box -->
@@ -22,69 +28,92 @@
                 <input type="file" id="avatarInput" accept="image/*">
             </label>
         </div>
-        <form action="#" method="POST" class="form_basic_info">
+        <form action="<?php echo BASE_URL ?>recruiter/updatecompany" method="POST" class="form_basic_info card-content form_company_info" enctype="multipart/form-data">
             <?php
                     foreach($userbyid as $key => $value) {
             ?>
             <div class="form-group">
                 <label for="name">Họ và tên *</label>
-                <input type="text" id="name" name="name" placeholder="Họ và tên" value="<?php echo $value['full_name'] ?>">
+                <input type="text" id="name" name="name" placeholder="Họ và tên" value="<?php echo $value['full_name'] ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="phone">Số điện thoại *</label>
-                <input type="text" id="phone" name="phone" placeholder="Số điện thoại" value="<?php echo $value['phone'] ?>">
+                <input type="text" id="phone" name="phone" placeholder="Số điện thoại" value="<?php echo $value['phone'] ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="email">Email *</label>
-                <input type="email" id="email" name="email" placeholder="Địa chỉ email" value="<?php echo $value['email'] ?>">
+                <input type="email" id="email" name="email" placeholder="Địa chỉ email" value="<?php echo $value['email'] ?>" readonly>
             </div>
             <?php
                 }
             ?>
-        </form>
     
         <!-- Company Information -->
-        <div class="card company-info">
-            <h3 class="card-header">Thông tin công ty</h3>
-            <form action="#" method="POST" class="card-content form_company_info">
+            <div class="card company-info">
+                <h3 class="card-header">Thông tin công ty</h3>
+                <?php
+                        foreach($userbyid as $key => $value) {
+                ?>
+                <input type="hidden" value="<?php echo $value['user_id'] ?>" name="user_id">
+                <input type="hidden" value="<?php echo $value['company_id'] ?>" name="company_id">
                 <div class="form-group">
-                    <label for="company-name">Tên công ty *</label>
-                    <input type="text" id="company-name" name="company-name" placeholder="Tên công ty">
+                    <label class="company-title" for="company-name">Tên công ty *</label>
+                    <input type="text" id="company-name" name="company_name" placeholder="Tên công ty" value="<?php echo $value['company_name'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="logo">Logo *</label>
+                    <?php if (!empty($value['logo'])): ?>
+                        <div>
+                            <p>Logo hiện tại:</p>
+                            <img src="../<?php echo $value['logo']; ?>" alt="Logo hiện tại" style="max-width: 60px; height: auto;">
+                        </div>
+                    <?php endif; ?>
                     <input type="file" id="logo" name="logo" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label for="website">Website *</label>
-                    <input type="url" id="website" name="website" placeholder="Trang web">
+                    <input type="text" id="website" name="company_website" placeholder="Trang web" value="<?php echo $value['company_website'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="address">Địa chỉ *</label>
-                    <input type="text" id="address" name="address" placeholder="Địa chỉ">
+                    <input type="text" id="address" name="company_address" placeholder="Địa chỉ" value="<?php echo $value['company_address'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="employees">Số lượng nhân viên *</label>
-                    <input type="number" id="employees" name="employees" placeholder="Số lượng nhân viên">
+                    <input type="number" id="employees" name="employee_count" placeholder="Số lượng nhân viên" value="<?php echo $value['employee_count'] ?>">
+                </div>
+                <div class="form-group">
+                    <label for="description">Những lợi ích khi làm việc tại công ti *</label>
+                    <textarea id="description" name="comp_benefit" placeholder="Lợi ích mang lại"><?php echo $value['comp_benefit'] ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="industry">Ngành nghề *</label>
-                    <input type="text" id="industry" name="industry" placeholder="Ngành nghề">
+                    <select name="industry_id" id="industry" class="form-control select-control">
+                        <option value="1" <?php echo $value['industry_id'] == 1 ? 'selected' : ''; ?>>Software Development</option>
+                        <option value="2" <?php echo $value['industry_id'] == 2 ? 'selected' : ''; ?>>Healthcare</option>
+                        <option value="3" <?php echo $value['industry_id'] == 3 ? 'selected' : ''; ?>>Education</option>
+                        <option value="4" <?php echo $value['industry_id'] == 4 ? 'selected' : ''; ?>>Finance</option>
+                        <option value="5" <?php echo $value['industry_id'] == 5 ? 'selected' : ''; ?>>Retail</option>
+                        <option value="6" <?php echo $value['industry_id'] == 6 ? 'selected' : ''; ?>>Construction</option>
+                        <option value="7" <?php echo $value['industry_id'] == 7 ? 'selected' : ''; ?>>Transportation</option>
+                        <option value="8" <?php echo $value['industry_id'] == 8 ? 'selected' : ''; ?>>Telecommunications</option>
+                        <option value="9" <?php echo $value['industry_id'] == 9 ? 'selected' : ''; ?>>Entertainment</option>
+                        <option value="10" <?php echo $value['industry_id'] == 10 ? 'selected' : ''; ?>>Energy</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="founded">Ngày thành lập *</label>
-                    <input type="date" id="founded" name="founded">
-                </div>
-                <div class="form-group">
-                    <label for="technology">Công nghệ *</label>
-                    <input type="text" id="technology" name="technology" placeholder="Công nghệ">
+                    <input type="date" id="founded" name="founded_date" value="<?php echo $value['founded_date'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="description">Mô tả *</label>
-                    <textarea id="description" name="description" placeholder="Mô tả công ty"></textarea>
+                    <textarea id="description" name="description" placeholder="Mô tả công ty"><?php echo $value['description'] ?></textarea>
                 </div>
+                <?php
+                    }
+                ?>
                 <button type="submit" class="btn-save">Lưu hồ sơ</button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>

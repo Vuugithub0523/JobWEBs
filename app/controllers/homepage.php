@@ -10,8 +10,6 @@ class homepage extends DController {
     public function index() {
         // Code hiển thị trang chủ
         require_once './app/views/homepage.php';
-        
-        // $this->load->view('homepage');   
     }
 
     public function viewIndustry($industry_id) {

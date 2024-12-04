@@ -242,7 +242,7 @@ $numJob= count($job);
             <br>
         </div>
         <div class="com2-right">
-            <h2 style="margin-bottom:10px;:padding:0;">Các công nghệ</h2>
+            <h2 style="margin-bottom:10px;padding:0;">Các công nghệ</h2>
             <div class="b-row flex-wrap" style="border-bottom:1px solid black;gap:10px 10px;padding-bottom:10px;" >
                 <div class="itemC mar">HTML5</div>
                 <div class="itemC mar">HTML5</div>

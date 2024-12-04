@@ -42,14 +42,14 @@
                     ?>
 
                         <tr>
-                            <td class="job-title"><a href="http://localhost/job_finder_website/recruiter/jobbyid/?id=<?php echo $value['job_id']; ?>"><?php echo $value['job_title']; ?></a></td>
+                            <td class="job-title"><a title="Xem chi tiết" href="http://localhost/job_finder_website/recruiter/jobbyid/?id=<?php echo $value['job_id']; ?>"><?php echo $value['job_title']; ?></a></td>
                             <td><span class="badge <?php echo $statusClass; ?> "><?php echo ucwords($value['status']); ?></span></td>
                             <td><?php echo $value['posted_date']; ?></td>
                             <td><?php echo $value['deadline']; ?></td>
                             <td><span class="badge <?php echo $job_type ?>"><?php echo $value['Job_Type']; ?></span></td>
                             <td><?php echo $value['total_applied']; ?></td>
                             <td><?php echo $value['Accepted_Applicants']; ?> / <?php echo $value['required_candidates']; ?></td>
-                            <td><a href="">...</a></td>
+                            <td class="delete-job"><a href="http://localhost/job_finder_website/recruiter/deletejob/?id=<?php echo $value['job_id']; ?>">Xoá</a></td>
                         </tr>
 
                     <?php
