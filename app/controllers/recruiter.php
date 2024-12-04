@@ -41,6 +41,7 @@ class recruiter extends DController{
         $table_company = 'companies';
 
         $data['countjob'] = $jobmodel->countjob($table_jobs, $user_id);
+        
         $data['list_all_job'] = $jobmodel->list_all_job($table_jobs, $user_id);
         $data['list_company'] = $company->list_company($table_company, $company_id);
         $data['topthreejob'] = $jobmodel->topthreejob($table_jobs, $user_id);   
