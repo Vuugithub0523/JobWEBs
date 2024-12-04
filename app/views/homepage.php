@@ -29,7 +29,7 @@
                 <img src="https://th.bing.com/th/id/OIP.nENBwk5XIZwapRzUo_7VWQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" alt="Stripe">
                 <span>JobFunny</span>
                 <a href="#">Tìm việc</a>
-                <!-- <a href="#">Duyệt các công ty</a> -->
+                <a href="#">Duyệt các công ty</a>
             </div>
     
             <div class="auth-buttons" >

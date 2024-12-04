@@ -66,11 +66,13 @@ body {
 .auth-buttons .btn-login {
     color: #4640DE;
     background-color: white;
+    cursor: pointer;
 }
 
 .auth-buttons .btn-register {
     color: white;
     background-color: #4640DE;
+    cursor: pointer;
 }
 
 .job-banner {
