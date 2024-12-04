@@ -10,36 +10,35 @@ class jobmodel extends DModel {
         return $this->db->select($sql);
     }
 
+    public function countjob($table_jobs) {
+        $sql = "SELECT 
+                COUNT($table_jobs.job_id) AS total_jobs,
+                SUM(CASE WHEN applications.application_status = 'rejected' THEN 1 ELSE 0 END) AS total_rejected,
+                SUM(CASE WHEN applications.application_status = 'accepted' THEN 1 ELSE 0 END) AS total_accepted,
+                SUM(CASE WHEN applications.application_status = 'pending' THEN 1 ELSE 0 END) AS total_pending
+                FROM $table_jobs
+                LEFT JOIN applications ON jobs.job_id = applications.job_id;";
+        return $this->db->select($sql);
+    }
+
     public function list_all_job($table_jobs) {
         $sql = "SELECT 
                 j.*,
                 jt.job_type_name AS Job_Type,
                 COUNT(a.application_id) AS Accepted_Applicants
                 FROM jobs j
-                JOIN job_type jt ON j.job_type_id = jt.job_type_id
-                LEFT JOIN applications a ON j.job_id = a.job_id AND a.status = 'accepted'
+                JOIN job_types jt ON j.job_type_id = jt.job_type_id
+                LEFT JOIN applications a ON j.job_id = a.job_id AND a.application_status = 'accepted'
                 GROUP BY j.job_id
-                ORDER BY j.posted_date DESC;";
-
-
+                ORDER BY j.job_posted_date DESC;";
         return $this->db->select($sql);
     }
     
 
-    public function countjob($table_jobs) {
-        $sql = "SELECT 
-                COUNT($table_jobs.job_id) AS total_jobs,
-                SUM(CASE WHEN applications.status = 'rejected' THEN 1 ELSE 0 END) AS total_rejected,
-                SUM(CASE WHEN applications.status = 'accepted' THEN 1 ELSE 0 END) AS total_accepted,
-                SUM(CASE WHEN applications.status = 'pending' THEN 1 ELSE 0 END) AS total_pending
-                FROM $table_jobs
-                LEFT JOIN applications ON jobs.job_id = applications.job_id;";
-        return $this->db->select($sql);
-    }
     public function topthreejob($table_jobs) {
         $sql = "SELECT *
                 FROM jobs
-                ORDER BY posted_date DESC
+                ORDER BY job_posted_date DESC
                 LIMIT 3;
                 ";
         return $this->db->select($sql);
@@ -53,36 +52,31 @@ class jobmodel extends DModel {
     //     return $this->db->select($sql, $data);
     // }
 
-    public function userbyid($table_users, $id) {
-        if (!is_numeric($id)) {
-            throw new Exception("Invalid ID");
-        }
-        $sql = "SELECT users.full_name, users.email, users.phone 
-                FROM $table_users 
-                WHERE $table_users.user_id = :id";
-        $data = [':id' => $id];
+    // public function userbyid($table_users, $id) {
+    //     if (!is_numeric($id)) {
+    //         throw new Exception("Invalid ID");
+    //     }
+    //     $sql = "SELECT users.full_name, users.email, users.phone 
+    //             FROM $table_users 
+    //             WHERE $table_users.user_id = :id";
+    //     $data = [':id' => $id];
     
-        // Debug
-        $result = $this->db->select($sql, $data);
-        if (empty($result)) {
-            die("Không có thông tin người dùng trong database.");
-        }
+    //     // Debug
+    //     $result = $this->db->select($sql, $data);
+    //     if (empty($result)) {
+    //         die("Không có thông tin người dùng trong database.");
+    //     }
     
-        return $result;
-    }
+    //     return $result;
+    // }
 
     public function jobbyid($table_jobs, $id) {
         if (!is_numeric($id)) {
             throw new Exception("Invalid ID");
         }
         $sql = "SELECT 
-                j.job_id,
-                j.job_title,
-                jt.job_type_name AS job_type,
-                j.status AS job_status,
-                j.required_candidates AS required_candidates,
-                j.total_applied AS total_applied,
-                a.status AS application_status,
+                j.*,
+                a.application_status AS application_status,
                 a.application_id AS application_id,
                 u.full_name AS applicant_name,
                 a.apply_at AS application_date,
@@ -99,7 +93,6 @@ class jobmodel extends DModel {
         return $this->db->select($sql, $data);
     }
     
-
     public function applicantbyjobid($table_jobs, $id) {
         if (!is_numeric($id)) {
             throw new Exception("Invalid ID");
@@ -125,9 +118,6 @@ class jobmodel extends DModel {
         return $this->db->select($sql, $data);
     }
     
-
-
-
     public function insertjob($table_jobs, $data) {
         return $this->db->insert($table_jobs, $data);
     }
@@ -135,6 +125,7 @@ class jobmodel extends DModel {
     public function updatejob($table_jobs, $data, $condition) {
         return $this->db->update($table_jobs, $data, $condition);
     }
+
     public function deletejob($table_jobs, $condition) {
         return $this->db->delete($table_jobs, $condition);
     }

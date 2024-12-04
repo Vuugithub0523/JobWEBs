@@ -20,18 +20,25 @@ class recruitermodel extends DModel {
         if (!is_numeric($id)) {
             throw new Exception("Invalid ID");
         }
-        $sql = "SELECT $table_users.full_name, $table_users.email, $table_users.phone 
-                FROM $table_users 
-                WHERE $table_users.user_id = :id";
+        $sql = "SELECT 
+                    u.*, 
+                    c.*
+                FROM 
+                    $table_users u
+                LEFT JOIN 
+                    companies c ON u.user_id = c.user_id
+                WHERE 
+                    u.user_id = :id";
         $data = [':id' => $id];
     
         // Debug
         $result = $this->db->select($sql, $data);
         if (empty($result)) {
-            die("Không có thông tin người dùng trong database.");
+            die("Không tìm thấy user với ID: " . $id);
         }
         return $result;
     }
+    
     
 
     // public function userbyid($table_users, $id) {

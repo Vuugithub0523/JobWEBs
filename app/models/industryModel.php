@@ -19,7 +19,7 @@ class industryModel extends DModel {
     
 
     public function getIndustries() {
-        $sql = "SELECT industry_name FROM industry";
+        $sql = "SELECT industry_name FROM industries";
         return $this->db->select($sql);  // Giả sử phương thức `select` trả về một mảng kết quả
     }
 }
