@@ -70,19 +70,19 @@
                     <td><?php echo $counter++; ?></td>
                     <td class="company-info">
                         <?php
-                        $logo = isset($application['logo']) && !empty($application['logo']) ? $application['logo'] : 'default_logo.png';
+                        $logo = isset($application['comp']) && !empty($application['logo']) ? $application['logo'] : 'default_logo.png';
                         ?>
-                        <img src="<?php echo htmlspecialchars($logo); ?>" alt="Company Logo">
-                        <span><?php echo htmlspecialchars($application['company_name']); ?></span>
+                        <img src="public/img/<?php echo htmlspecialchars($logo); ?>" alt="Company Logo">
+                        <span><?php echo htmlspecialchars($application['comp_name']); ?></span>
                     </td>
                     <td><?php echo htmlspecialchars($application['job_title']); ?></td>
                     <td><?php echo htmlspecialchars($application['apply_at']); ?></td>
 
-                    <?php if ($application['status'] == 'accepted'): ?>
+                    <?php if ($application['application_status'] == 'accepted'): ?>
                         <td><span class="status accepted"><?php echo htmlspecialchars($application['status']); ?></span></td>
-                    <?php elseif ($application['status'] == 'pending'): ?>
+                    <?php elseif ($application['application_status'] == 'pending'): ?>
                         <td><span class="status pending"><?php echo htmlspecialchars($application['status']); ?></span></td>
-                    <?php elseif ($application['status'] == 'rejected'): ?>
+                    <?php elseif ($application['application_status'] == 'rejected'): ?>
                         <td><span class="status rejected"><?php echo htmlspecialchars($application['status']); ?></span></td>
                     <?php endif; ?>
                 </tr>
