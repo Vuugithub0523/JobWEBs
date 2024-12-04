@@ -363,6 +363,7 @@ if(isset($data)&&$data){
     .then(response => response.text())
     .then(data => {
         try {
+            console.log(data);
             let jsonData = JSON.parse(data);
             listCompanyCurrent=jsonData;
             current_page=1;

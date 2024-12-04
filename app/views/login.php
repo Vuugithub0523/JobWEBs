@@ -23,7 +23,7 @@
     .rg-left{
         width:40%;
         height:100%;
-        background-image:url(public/images/log.png);
+        background-image:url(public/img/log.png);
         background-size:cover;
         background-position:center;
         background-repeat:no-repeat;

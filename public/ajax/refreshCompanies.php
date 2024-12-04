@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
-include '../../system/libs/Database.php';
-include '../../system/libs/DModel.php';
+include '../../system/library/Database.php';
+include '../../system/library/DModel.php';
 include '../../app/models/searchcompanymodel.php';
 $model= new searchcompanymodel();
 $object_filter = json_decode(file_get_contents('php://input'));

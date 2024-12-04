@@ -27,7 +27,6 @@
                         $or = ($n < count($industry)) ? " OR " : ((!empty($size) || !empty($search)) ? " AND " : " ");
                         $key = ":industry_id" . $n;
                         $condi .= "industry_id = $key" . $or;
-                        $ko=$value;
                         $data[$key] = intval($value);
                         $n++;
                     }
