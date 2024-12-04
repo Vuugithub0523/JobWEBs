@@ -7,7 +7,7 @@ class industryModel extends DModel {
     }
 
     public function industry() {
-        $sql = "select * from industry";
+        $sql = "select * from industries";
         return $this->db->select($sql);
     }
 
@@ -16,8 +16,8 @@ class industryModel extends DModel {
                 FROM jobs
                 JOIN users ON jobs.user_id = users.user_id
                 JOIN companies ON users.user_id = companies.user_id
-                JOIN industry ON companies.industry_id = industry.industry_id
-                WHERE industry.industry_id = :industry_id";
+                JOIN industries ON companies.industry_id = industries.industry_id
+                WHERE industries.industry_id = :industry_id";
         $data = [':industry_id' => $industry_id]; // Dữ liệu cần truyền vào
         $result = $this->db->select($sql, $data); // Thực hiện truy vấn
         return $result ? $result[0]['total_jobs'] : 0; // Trả về số lượng công việc

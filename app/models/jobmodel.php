@@ -67,19 +67,19 @@ class jobmodel extends DModel {
     public function topnewjob($table_jobs) {
         $sql = "SELECT *
                 FROM jobs
-                ORDER BY posted_date DESC
+                ORDER BY job_posted_date DESC
                 LIMIT 8;
                 ";
         return $this->db->select($sql);
     }
     public function getJobs() {
         $sql = "
-            select companies.industry_id, jobs.job_id, jobs.job_title, companies.company_name, companies.company_address, companies.logo, job_type.job_type_name
+            select companies.industry_id, jobs.job_id, jobs.job_title, companies.comp_name, companies.comp_address, companies.comp_logo, job_types.job_type_name
             from jobs
-            join job_type on jobs.job_type_id = job_type.job_type_id
+            join job_types on jobs.job_type_id = job_types.job_type_id
             join users on jobs.user_id = users.user_id
             join companies on users.user_id = companies.user_id
-            order by jobs.posted_date desc
+            order by jobs.job_posted_date desc
             limit 8
         ";
         return $this->db->select($sql);
@@ -87,9 +87,9 @@ class jobmodel extends DModel {
 
     public function getSimilarJobs($industry_id) {
         $sql = "
-            SELECT companies.industry_id, jobs.job_title, companies.company_name, companies.company_address, companies.logo, job_type.job_type_name
+            SELECT companies.industry_id, jobs.job_title, companies.comp_name, companies.comp_address, companies.comp_logo, job_types.job_type_name
             FROM jobs
-            JOIN job_type ON jobs.job_type_id = job_type.job_type_id
+            JOIN job_types ON jobs.job_type_id = job_types.job_type_id
             JOIN users ON jobs.user_id = users.user_id
             JOIN companies ON users.user_id = companies.user_id
             WHERE companies.industry_id = :industry_id -- Lọc theo industry_id
@@ -104,11 +104,11 @@ class jobmodel extends DModel {
 
 public function getJobById($job_id) {
     // Viết câu SQL để lấy công việc theo job_id
-    $sql = "SELECT jobs.*, companies.*, job_type.*
+    $sql = "SELECT jobs.*, companies.*, job_types.*
             FROM jobs
             JOIN users ON jobs.user_id = users.user_id
             JOIN companies ON users.user_id = companies.user_id
-            JOIN job_type ON jobs.job_type_id = job_type.job_type_id
+            JOIN job_types ON jobs.job_type_id = job_types.job_type_id
             WHERE jobs.job_id = :job_id LIMIT 1";
     $data = [':job_id' => $job_id];
 

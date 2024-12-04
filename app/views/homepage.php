@@ -149,13 +149,13 @@
                 <?php foreach ($getJobs as $job): ?>
                     <a href="<?php echo BASE_URL; ?>jobDescription?job_id=<?php echo $job['job_id']; ?>" class="job-card">
                         <div class="job-logo">
-                            <img src="<?php echo $job['logo']; ?>" alt="Logo">
+                            <img src="public/img/<?php echo $job['comp_logo']; ?>" alt="Logo">
                         </div>
 
                         <div class="infor-job-card">
                             <h3><?php echo $job['job_title']; ?></h3>
-                            <p><?php echo $job['company_name']; ?> 
-                                <span>• <?php echo isset($job['company_address']) ? $job['company_address'] : 'Chưa xác định'; ?></span>
+                            <p><?php echo $job['comp_name']; ?> 
+                                <span>• <?php echo isset($job['comp_address']) ? $job['comp_address'] : 'Chưa xác định'; ?></span>
                             </p>
                             <div class="job-tags">
                                 <!-- <span class="tag-part-time">Part-Time</span> -->
