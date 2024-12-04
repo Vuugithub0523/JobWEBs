@@ -26,10 +26,10 @@
             <div id="applicant-list" class="profile-section">
                 <div class="job-header">
                     <h2><?php if (!empty($jobbyid)) { echo $jobbyid[0]['job_title'];} ?></h2>
-                    <p><?php if (!empty($jobbyid)) { echo $jobbyid[0]['job_status'];} ?> - <?php if (!empty($jobbyid)) { echo $jobbyid[0]['job_type'];} ?> · <?php if (!empty($jobbyid)) { echo $jobbyid[0]['total_applicants'];} ?> / <?php if (!empty($jobbyid)) { echo $jobbyid[0]['required_candidates'];} ?> Đã tuyển</p>
+                    <p><?php if (!empty($jobbyid)) { echo $jobbyid[0]['job_status'];} ?> - <?php if (!empty($jobbyid)) { echo $jobbyid[0]['job_type_name'];} ?> · <?php if (!empty($jobbyid)) { echo $jobbyid[0]['total_applicants'];} ?> / <?php if (!empty($jobbyid)) { echo $jobbyid[0]['job_required_candidates'];} ?> Đã tuyển</p>
                 </div>
                 <div class="applicant-info">
-                    <p>Tổng số ứng viên: <span><?php if (!empty($jobbyid)) { echo $jobbyid[0]['total_applied'];} ?></span></p>
+                    <p>Tổng số ứng viên: <span><?php if (!empty($jobbyid)) { echo $jobbyid[0]['job_total_applied'];} ?></span></p>
                 </div>
                 <table class="applicant-table">
                     <thead>
@@ -49,7 +49,7 @@
         <td class="applicant-name"><?php echo !empty($value['applicant_name']) ? $value['applicant_name'] : 'Chưa có thông tin'; ?></td>
         <td><span class="badge reviewing"><?php echo !empty($value['application_status']) ? $value['application_status'] : 'Chưa cập nhật'; ?></span></td>
         <td><?php echo !empty($value['application_date']) ? $value['application_date'] : 'Chưa có thông tin'; ?></td>
-        <td class=""><a class="btn-view-application" href="http://localhost/job_finder_website/recruiter/applicantbyjobid/?id=<?php echo !empty($value['application_id']) ? $value['application_id'] : '#'; ?>">Xem đơn ứng tuyển</a></td>
+        <td class=""><a class="btn-view-application" href="http://localhost/job_finder_website/recruiter/applicantbyid/?id=<?php echo !empty($value['application_id']) ? $value['application_id'] : '#'; ?>">Xem đơn ứng tuyển</a></td>
     </tr>
     <?php 
         }

@@ -19,6 +19,14 @@ class recruiter extends DController{
     }
 
     public function recruiter() {
+        session_start();
+        if (!isset($_SESSION['current'])) {
+            die("Session current is not set.");
+        }
+        if (!isset($_SESSION['current']['user_id'])) {
+            die("Session current['id'] is not set.");
+        }
+
         $jobmodel = $this->load->model('jobmodel');
         $company = $this->load->model('company');
         $recruitermodel = $this->load->model('recruitermodel');
@@ -27,17 +35,41 @@ class recruiter extends DController{
         $table_jobs = 'jobs';
         $table_users = 'users';
         $company_id = 1;
-        $user_id = 3;
+        if (isset($_SESSION['current']['user_id'])) {
+            $user_id = $_SESSION['current']['user_id'];
+        }
         $table_company = 'companies';
 
-        $data['countjob'] = $jobmodel->countjob($table_jobs);
-        $data['list_all_job'] = $jobmodel->list_all_job($table_jobs);
+        $data['countjob'] = $jobmodel->countjob($table_jobs, $user_id);
+        $data['list_all_job'] = $jobmodel->list_all_job($table_jobs, $user_id);
         $data['list_company'] = $company->list_company($table_company, $company_id);
-        $data['topthreejob'] = $jobmodel->topthreejob($table_jobs);
+        $data['topthreejob'] = $jobmodel->topthreejob($table_jobs, $user_id);   
         $data['userbyid'] = $recruitermodel->userbyid($table_users, $user_id);
         
         $this->load->view('recruiter', $data);
     }
+
+    public function userProfile() {
+        session_start();
+
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        if (isset($_SESSION['current']['id'])) {
+            $id = $_SESSION['current']['id'];
+            $recruitermodel = $this->load->model('recruitermodel');
+            
+            $table_users = 'users';
+            $data['userbyid'] = $recruitermodel->userbuid($table_users, $id);
+
+
+
+
+        } else {
+            // Điều hướng đến trang đăng nhập nếu chưa đăng nhập
+            header("Location: login.php");
+            exit();
+        }
+    }
+
     public function jobbyid() {
         $id = $_GET['id'];
         $jobmodel = $this->load->model('jobmodel');
@@ -45,13 +77,13 @@ class recruiter extends DController{
         $data['jobbyid'] = $jobmodel->jobbyid($table_jobs, $id);
         $this->load->view('applicant_list', $data);
     }
-    public function applicantbyjobid() {
+    public function applicantbyid() {
         $id = $_GET['id'];
 
         $jobmodel = $this->load->model('jobmodel');
-        $table_jobs = 'applications';
+        $table_jobs = 'jobs';
 
-        $data['applicantbyjobid'] = $jobmodel->applicantbyjobid($table_jobs, $id);
+        $data['applicantbyid'] = $jobmodel->applicantbyid($table_jobs, $id);
         $this->load->view('applicant_detail', $data);
     }  
 
@@ -163,17 +195,118 @@ class recruiter extends DController{
         }
     }
 
+    public function updatecompany() {
+        if (!isset($_FILES['logo']) || $_FILES['logo']['error'] !== UPLOAD_ERR_OK) {
+            die('Lỗi tải lên logo hoặc không có logo được tải lên');
+        }
+    
+        $company = $this->load->model('company');
+        $table_companies = 'companies';
+        $company_id = $_POST['company_id'];
+    
+        $company_name = $_POST['company_name'];
+        $logo = $_FILES['logo'];
+        $company_website = $_POST['company_website'];
+        $company_address = $_POST['company_address'];
+        $employee_count = $_POST['employee_count'];
+        $comp_benefit = $_POST['comp_benefit'];
+        $industry_id = $_POST['industry_id'];
+        $founded_date = $_POST['founded_date'];
+        $description = $_POST['description'];
+        $user_id = $_POST['user_id'];
+    
+        // Thư mục đích để lưu logo
+        $uploadDir = 'public/img/'; // Đảm bảo thư mục này tồn tại và có quyền ghi
+    
+        // Tạo tên file mới để tránh trùng lặp
+        $fileName = uniqid() . '-' . basename($logo['name']);
+        $uploadPath = $uploadDir . $fileName;
+    
+        // Kiểm tra và di chuyển file từ thư mục tạm
+        if (move_uploaded_file($logo['tmp_name'], $uploadPath)) {
+            // Nếu thành công, lưu đường dẫn file vào cơ sở dữ liệu
+            $logoPath = $uploadPath;
+        } else {
+            die('Không thể lưu logo vào thư mục đích');
+        }
+    
+        // Dữ liệu cập nhật
+        $condition = "$table_companies.company_id = '$company_id'";
+        $data = array(
+            'company_name' => $company_name,
+            'logo' => $logoPath, // Lưu đường dẫn ảnh vào DB
+            'company_website' => $company_website,
+            'company_address' => $company_address,
+            'employee_count' => $employee_count,
+            'comp_benefit' => $comp_benefit,
+            'industry_id' => $industry_id,
+            'founded_date' => $founded_date,
+            'description' => $description,
+            'user_id' => $user_id
+        );
+    
+        // Gọi hàm update
+        $company->updatecompany($table_companies, $data, $condition);
+    
+        echo "Cập nhật thành công!";
+    }
+    
+
+    // public function updatecompany() {
+    //     if (!isset($_POST['logo'])) {
+    //         die('Có gửi đc logo quái đấu');
+    //     }
+    //     $company = $this->load->model('company');
+    //     $table_companies = 'companies';
+    //     $company_id = $_POST['company_id'];
+
+    //     $company_name = $_POST['company_name'];
+    //     $logo = $_FILES['logo'];
+
+
+    //     $company_website = $_POST['company_website'];
+    //     $company_address = $_POST['company_address'];
+    //     $employee_count = $_POST['employee_count'];
+    //     $comp_benefit = $_POST['comp_benefit'];
+    //     $industry_id = $_POST['industry_id'];
+    //     $founded_date = $_POST['founded_date'];
+    //     $description = $_POST['description'];
+    //     $user_id = $_POST['user_id'];
+
+
+    //     $condition = "$table_companies.company_id = '$company_id'";
+    //     $data = array(
+    //         'company_name' => $company_name,
+    //         'logo' => $logo,
+    //         'company_website' => $company_website,
+    //         'company_address' => $company_address,
+    //         'employee_count' => $employee_count,
+    //         'comp_benefit' => $comp_benefit,
+    //         'industry_id' => $industry_id,
+    //         'founded_date' => $founded_date,
+    //         'description' => $description,
+    //         'user_id' => $user_id
+    //     );
+
+    //     $company->updatecompany($table_companies, $data, $condition);
+    // }
+
     public function deletejob() {
         $jobmodel = $this->load->model('jobmodel');
         $table_jobs = 'jobs';
 
-        $condition ="job_id = 1";
+        $id = $_GET['id'];
+
+        $condition ="job_id = $id";
 
 
         $result = $jobmodel->deletejob($table_jobs, $condition);
         
         if($result == 1) {
-            echo 'Xoá thành công'; 
+            echo 'Xoá thành công';
+            sleep(3);
+            header("Location: http://localhost/job_finder_website/recruiter/recruiter");
+            exit();
         }else {
             echo 'Xoá thất bại'; 
         }

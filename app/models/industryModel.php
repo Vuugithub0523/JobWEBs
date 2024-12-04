@@ -25,7 +25,7 @@ class industryModel extends DModel {
     
     public function getIndustries() {
         // Lấy danh sách ngành
-        $sql = "SELECT industry_id, industry_name FROM industry";
+        $sql = "SELECT industry_id, industry_name FROM industries";
         $industries = $this->db->select($sql); // Trả về mảng các ngành
     
         // Duyệt qua từng ngành và gọi hàm countJobsByIndustry

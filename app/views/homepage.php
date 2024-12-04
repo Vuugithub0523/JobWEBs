@@ -18,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Calistoga&family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
-
 <?php
     require_once './app/models/jobmodel.php';
 ?>
@@ -33,9 +32,13 @@
                 <!-- <a href="#">Duyệt các công ty</a> -->
             </div>
     
-            <div class="auth-buttons">
-                <button class="btn-login">Đăng nhập</button>
-                <button class="btn-register">Đăng ký</button>
+            <div class="auth-buttons" >
+                <button id="btn-login" class="btn-login">Đăng nhập</button>
+                <button id="btn-register" class="btn-register">Đăng ký</button>
+            </div>
+            <div id="user-info" class="user-info" style="display:none;">
+                <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar">
+                <span id="username" class="username">Tên người dùng</span>
             </div>
         </div>
     </div>
@@ -128,9 +131,6 @@
                 <div class="banner-homepage-cta-image">
                     <img src="https://cdn.prod.website-files.com/6690d5b648b98d802b9b2a05/6690d5b648b98d802b9b2a54_Dashboard%20Company%203.1%20Image.png" alt="">
                 </div>
-                
-                <!-- <div class="banner-homepage-cta-top"></div>
-                <div class="banner-homepage-cta-bottom"></div> -->
             </div>
         </div>
     </div>
@@ -213,7 +213,6 @@
 
             <div class="footer-small2-container">
                 <p>2021@JobFunny. All rights reserved.</p>
-                
                 <div class="icon-footer">
                     <i class="fa-brands fa-facebook-f"></i>
                     <i class="fa-brands fa-instagram"></i>
@@ -223,5 +222,17 @@
             </div>
         </div>
     </div>
+
+<script>
+    const loginBtn = document.getElementById('btn-login');
+    const registerBtn = document.getElementById('btn-register');
+    loginBtn.addEventListener('click', function () {
+        window.location.href = "http://localhost/job_finder_website/login/login";
+    });
+    registerBtn.addEventListener('click', function () {
+        window.location.href = "http://localhost/job_finder_website/login/login?url=register/registerUser";
+    }
+    );
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruiter Profile</title>
+    <title>Nhà tuyển dụng</title>
     <link rel="stylesheet" href="../public/css/recruiter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -23,15 +23,19 @@
             <div class="logout">
                 <button>Đăng xuất</button>
                 <div class="user-info">
+                    <?php
+                        if (isset($_SESSION['current'])) {
+                            $currentUser = $_SESSION['current'];
+                    ?>
                     <img src="https://via.placeholder.com/40" alt="Avatar">
-                    <span>Luong Thong</span>
+                    <span><?php echo $currentUser['full_name'] ?></span>
+                    
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </aside>
-
-        <!-- Main Content -->
-         
-
         <main class="main-content">
         <?php
             if (isset($msg)) {
@@ -51,7 +55,7 @@
                 <div class="dashboard-stats">
                     <div class="stat-item posted">
                         <h3>Tổng số lượng công việc đã đăng</h3>
-                        <?php echo "<p id='total_jobs'>" . $value['total_jobs']. "</p>"; ?>
+                        <?php echo "<p id='total_jobs'>" . $value['total_jobs_posted']. "</p>"; ?>
                     </div>
                     <div class="stat-item denied">
                         <h3>Số lượng công việc từ chối</h3>
@@ -62,7 +66,7 @@
                         <?php echo "<p id='total_accepted'>" . $value['total_accepted']. "</p>"; ?>
                     </div>
                     <div class="stat-item pending">
-                        <h3>Đang số lượng công việc chờ xử lí</h3>
+                        <h3>Số lượng công việc đang chờ xử lí</h3>
                         <?php echo "<p id='total_pending'>" . $value['total_pending']. "</p>"; ?>
                     </div>
                 </div>
@@ -71,13 +75,13 @@
                 ?>
                 <div class="card company-info">
                     <h2>Thông tin công ti</h2>
-                    <?php 
-                        foreach($list_company as $key => $value) {
+                    <?php
+                    foreach($userbyid as $key => $value) {
                     ?>
-                    <p><strong>Tên:</strong> <span id="company-name"><?php echo $value['company_name']; ?></span></p>
-                    <p><strong>Địa chỉ:</strong> <span id="company-address"><?php echo $value['company_address']; ?></span></p>
-                    <p><strong>Ngày thành lập:</strong> <span id="company-founded"><?php echo $value['founded_date']; ?></span></p>
-                    <p><strong>Số lượng nhân viên:</strong> <span id="company-employees"><?php echo $value['employee_count']; ?></span></p>
+                    <p><strong>Tên:</strong> <span id="company-name"><?php echo $value['comp_name']; ?></span></p>
+                    <p><strong>Địa chỉ:</strong> <span id="company-address"><?php echo $value['comp_address']; ?></span></p>
+                    <p><strong>Ngày thành lập:</strong> <span id="company-founded"><?php echo isset($value['founded_date']) && $value['founded_date'] !== null ? $value['founded_date'] : "Chưa cập nhật"; ?></span></p>
+                    <p><strong>Số lượng nhân viên:</strong> <span id="company-employees"><?php echo isset($value['employee_count']) && $value['employee_count'] !== null ? $value['employee_count'] : "Chưa cập nhật"; ?></span></p>
                     <?php
                         }
                     ?>
@@ -90,7 +94,7 @@
                     <?php 
                         foreach($topthreejob as $key => $value) {
                     ?>
-                    <?php echo "<li><strong>" .$value['job_title'] . "</strong> - Deadline: <span>".  $value['deadline']. "</span></li>" ?>
+                    <?php echo "<li><strong>" .$value['job_title'] . "</strong> - Deadline: <span>".  $value['job_deadline']. "</span></li>" ?>
                     <?php
                         }
                     ?>

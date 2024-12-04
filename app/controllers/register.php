@@ -2,7 +2,7 @@
 session_start();
 class register extends DController{
     public function __construct(){
-        $data=array();
+        $data = array();
         parent::__construct();
     }
     public function registerUser(){
@@ -11,6 +11,7 @@ class register extends DController{
         $model=$this->load->model('registerModel');
         $data['user']=$model->getUser();
         if(isset($_POST['register1'])){
+            extract($data);
             foreach($user as $value){
                 if($value['email']==$_POST['rg-email']){
                     unset($_POST['register1']);
