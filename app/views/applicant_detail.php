@@ -28,7 +28,7 @@
                     <h2>Chi tiết đơn ứng tuyển</h2>
                 </div>
                         <?php 
-                            foreach($applicantbyjobid as $key => $value) {
+                            foreach($applicantbyid as $key => $value) {
                         ?>
                 <div class="detail-container">
                     <!-- Bên trái -->

@@ -55,28 +55,28 @@
                         foreach($userbyid as $key => $value) {
                 ?>
                 <input type="hidden" value="<?php echo $value['user_id'] ?>" name="user_id">
-                <input type="hidden" value="<?php echo $value['company_id'] ?>" name="company_id">
+                <input type="hidden" value="<?php echo $value['comp_id'] ?>" name="comp_id">
                 <div class="form-group">
                     <label class="company-title" for="company-name">Tên công ty *</label>
-                    <input type="text" id="company-name" name="company_name" placeholder="Tên công ty" value="<?php echo $value['company_name'] ?>">
+                    <input type="text" id="company-name" name="company_name" placeholder="Tên công ty" value="<?php echo $value['comp_name'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="logo">Logo *</label>
-                    <?php if (!empty($value['logo'])): ?>
+                    <?php if (!empty($value['comp_logo'])): ?>
                         <div>
                             <p>Logo hiện tại:</p>
-                            <img src="../<?php echo $value['logo']; ?>" alt="Logo hiện tại" style="max-width: 60px; height: auto;">
+                            <img src="../<?php echo $value['comp_logo']; ?>" alt="Logo hiện tại" style="max-width: 60px; height: auto;">
                         </div>
                     <?php endif; ?>
                     <input type="file" id="logo" name="logo" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label for="website">Website *</label>
-                    <input type="text" id="website" name="company_website" placeholder="Trang web" value="<?php echo $value['company_website'] ?>">
+                    <input type="text" id="website" name="company_website" placeholder="Trang web" value="<?php echo $value['comp_website'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="address">Địa chỉ *</label>
-                    <input type="text" id="address" name="company_address" placeholder="Địa chỉ" value="<?php echo $value['company_address'] ?>">
+                    <input type="text" id="address" name="company_address" placeholder="Địa chỉ" value="<?php echo $value['comp_address'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="employees">Số lượng nhân viên *</label>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Mô tả *</label>
-                    <textarea id="description" name="description" placeholder="Mô tả công ty"><?php echo $value['description'] ?></textarea>
+                    <textarea id="description" name="description" placeholder="Mô tả công ty"><?php echo $value['comp_description'] ?></textarea>
                 </div>
                 <?php
                     }
