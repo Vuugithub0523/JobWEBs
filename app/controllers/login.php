@@ -12,12 +12,12 @@ class login extends DController{
             foreach($data['user'] as $value){
                 if($value['email']==$_POST['rg-email']&&$value['password']==md5($_POST['rg-password'])){
                     $_SESSION['current']=$value;
-                    if($value['rule']==3){
+                    if($value['role']==3){
                         //link đến trang chủ mặc định
                         echo('good');
                         //header('Location: ../z-Demo');
                         exit();
-                    }else if($value['rule']==2){
+                    }else if($value['role']==2){
                         echo('good2');
                         exit();
                         //link đến trang dashboard của nhà tuyển dụng

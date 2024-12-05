@@ -31,10 +31,10 @@
         <div class="job-overview">
             <div class="job-summary">
                 <div class="left-job-summary">
-                    <img src="<?php echo $job['logo'] ?>" alt="logo-company">
+                    <img src="<?php echo $job['comp_logo'] ?>" alt="logo-company">
                     <div class="info-job-summary">
                         <h2><?php echo $job['job_title'] ?></h2>
-                        <p><?php echo $job['company_name'] ?> • <?php echo $job['company_address'] ?> • <?php echo $job['job_type_name'] ?></p>
+                        <p><?php echo $job['comp_name'] ?> • <?php echo $job['comp_address'] ?> • <?php echo $job['job_type_name'] ?></p>
                     </div>
                 </div>
 
@@ -129,11 +129,11 @@
     <div class="company-info">
         <div class="company-description">
             <div class="top-company-description">
-                <img src="<?php echo $job['logo'] ?>" alt="logo_company">
+                <img src="<?php echo $job['comp_logo'] ?>" alt="logo_company">
 
                 <div class="moreInfo-company">
-                    <h3><?php echo $job['company_name'] ?></h3>
-                    <a href="#" class="read-more">Đọc thêm về <?php echo $job['company_name'] ?> <i class="fas fa-arrow-right"></i></a>
+                    <h3><?php echo $job['comp_name'] ?></h3>
+                    <a href="#" class="read-more">Đọc thêm về <?php echo $job['comp_name'] ?> <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -164,12 +164,12 @@
                 <?php foreach ($similarJobs as $similarJob): ?>
                 <a href="#" class="job-card">
                 <div class="job-logo">
-                    <img src="<?php echo $similarJob['logo']; ?>" alt="Logo">
+                    <img src="<?php echo $similarJob['comp_logo']; ?>" alt="Logo">
                 </div>
                 <div class="infor-job-card">
                     <h3><?php echo $similarJob['job_title']; ?></h3>
-                    <p><?php echo $similarJob['company_name']; ?>
-                        <span>• <?php echo isset($similarJob['company_address']) ? $similarJob['company_address'] : 'Chưa xác định'; ?></span>
+                    <p><?php echo $similarJob['comp_name']; ?>
+                        <span>• <?php echo isset($similarJob['comp_address']) ? $similarJob['comp_address'] : 'Chưa xác định'; ?></span>
                     </p>
                     <div class="job-tags">
                         <?php if ($similarJob['job_type_name'] == 'fulltime'): ?>

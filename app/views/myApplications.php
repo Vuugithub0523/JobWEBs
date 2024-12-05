@@ -24,7 +24,7 @@
 
                 <div class="account-bottom-sidebar">
                     <div class="img-account">
-                        <img src="https://i.pinimg.com/originals/6f/d6/1f/6fd61fe74b3851261242655f07cd0259.jpg" alt="avt-account">
+                        <img src="<?php echo $user_info[0]['avatar']; ?>" alt="avt-account">
                     </div>
 
                     <div class="info-account">
@@ -70,20 +70,20 @@
                     <td><?php echo $counter++; ?></td>
                     <td class="company-info">
                         <?php
-                        $logo = isset($application['logo']) && !empty($application['logo']) ? $application['logo'] : 'default_logo.png';
+                        $logo = isset($application['comp_logo']) && !empty($application['comp_logo']) ? $application['comp_logo'] : 'default_logo.png';
                         ?>
                         <img src="<?php echo htmlspecialchars($logo); ?>" alt="Company Logo">
-                        <span><?php echo htmlspecialchars($application['company_name']); ?></span>
+                        <span><?php echo htmlspecialchars($application['comp_name']); ?></span>
                     </td>
                     <td><?php echo htmlspecialchars($application['job_title']); ?></td>
                     <td><?php echo htmlspecialchars($application['apply_at']); ?></td>
 
-                    <?php if ($application['status'] == 'accepted'): ?>
-                        <td><span class="status accepted"><?php echo htmlspecialchars($application['status']); ?></span></td>
-                    <?php elseif ($application['status'] == 'pending'): ?>
-                        <td><span class="status pending"><?php echo htmlspecialchars($application['status']); ?></span></td>
-                    <?php elseif ($application['status'] == 'rejected'): ?>
-                        <td><span class="status rejected"><?php echo htmlspecialchars($application['status']); ?></span></td>
+                    <?php if ($application['application_status'] == 'accepted'): ?>
+                        <td><span class="status accepted"><?php echo htmlspecialchars($application['application_status']); ?></span></td>
+                    <?php elseif ($application['application_status'] == 'pending'): ?>
+                        <td><span class="status pending"><?php echo htmlspecialchars($application['application_status']); ?></span></td>
+                    <?php elseif ($application['application_status'] == 'rejected'): ?>
+                        <td><span class="status rejected"><?php echo htmlspecialchars($application['application_status']); ?></span></td>
                     <?php endif; ?>
                 </tr>
                 <?php
