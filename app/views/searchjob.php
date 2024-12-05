@@ -374,7 +374,7 @@ if(isset($data)&&$data){
         })
     }console.log();
     //Sử dụng phương thức AJAX để gửi yêu câù tới máy chủ và nhận dữ liệu trả về để hiện lên các thẻ job
-    callSever(getSessionStorage('filter_jobs'));
+    callSever();
     //Lọc theo ngành
     var filter_indusL=document.querySelectorAll('.label_filterSize');
     filter_indusL.forEach(tag_indus =>{
@@ -476,7 +476,7 @@ if(isset($data)&&$data){
     })
     //Hàm sử dụng ajax
     function callSever(){
-        fetch('http://localhost/job_finder_website/public/ajax/refreshJobs.php', {
+        fetch('http://localhost/job_finder_website/public/ajax/refreshJobs.php/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(getSessionStorage('filter_jobs'))
