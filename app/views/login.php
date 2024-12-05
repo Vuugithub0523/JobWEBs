@@ -157,7 +157,7 @@
     </div>
     <div class="rg-right  rg-oMainPart">
         <div class="rg-mainPart">
-            <form action="?url=login/login" method="POST" name="myForm" class="rg-form">
+            <form  action="<?php echo BASE_URL . '/login/login'; ?>"     method="POST" name="myForm" class="rg-form">
                 <h1>Đăng Nhập</h1>
                 <div class="rg-titleField"><b>Email</b></div>
                 <div class="rg-field1">

@@ -1,3 +1,5 @@
+
+
 <?php
 
 class Main {
@@ -95,7 +97,7 @@ class Main {
                 $this->controller->{$methodName}();
             }
         } else {
-                header("Location: " . BASE_URL . "index/notfound");
+              //  header("Location: " . BASE_URL . "index/notfound");
         }
     }
 }

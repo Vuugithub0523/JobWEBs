@@ -59,7 +59,7 @@
         }
         public function getjobs($parameter =false){
             if (!empty($parameter)) {
-                extract($parameter);
+                // extract($parameter);
                 $condi = "";
                 $data = [];
                 if(!empty($industry)){$industry=explode('a2x',$industry);}

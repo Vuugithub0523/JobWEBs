@@ -17,7 +17,7 @@
         }
         public function getCompanies($parameter =false){
             if (!empty($parameter)) {
-                extract($parameter);
+                // extract($parameter);
                 $condi = "";
                 $data = [];
                 if(!empty($industry)){$industry=explode('%',$industry);}
