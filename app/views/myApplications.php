@@ -15,7 +15,7 @@
                 <a href="<?php echo BASE_URL; ?>" style="text-decoration: none; color: black;"><h3>JobFunny</h3></a>
                 <ul>
                     <li><a href="<?php echo BASE_URL; ?>"><i style="padding-left: 10px;" class="fa-solid fa-house"></i> Trang chủ</a></li>
-                    <li><a href="<?php echo BASE_URL; ?>/myApplications/index"><i style="padding-left: 14px;" class="fa-solid fa-file"></i> Đơn ứng tuyển của tôi</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/myApplications"><i style="padding-left: 14px;" class="fa-solid fa-file"></i> Đơn ứng tuyển của tôi</a></li>
                     <li><a href="<?php echo BASE_URL; ?>/myProfile/myProfile"><i style="padding-left: 12px;" class="fa-solid fa-user"></i> Hồ sơ của tôi</a></li>
                 </ul>
             </div>
@@ -73,7 +73,7 @@
                         $logo = isset($application['comp_logo']) && !empty($application['comp_logo']) ? $application['comp_logo'] : 'default_logo.png';
                         ?>
                         <img src="<?php echo htmlspecialchars($logo); ?>" alt="Company Logo">
-                        <span><?php echo htmlspecialchars($application['comp_name']); ?></span>
+                        <span><?php echo htmlspecialchars($application['company_name']); ?></span>
                     </td>
                     <td><?php echo htmlspecialchars($application['job_title']); ?></td>
                     <td><?php echo htmlspecialchars($application['apply_at']); ?></td>

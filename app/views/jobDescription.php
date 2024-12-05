@@ -129,7 +129,7 @@
     <div class="company-info">
         <div class="company-description">
             <div class="top-company-description">
-                <img src="<?php echo $job['comp_logo'] ?>" alt="logo_company">
+                <img src="<?php echo $job['logo'] ?>" alt="logo_company">
 
                 <div class="moreInfo-company">
                     <h3><?php echo $job['comp_name'] ?></h3>
@@ -164,7 +164,7 @@
                 <?php foreach ($similarJobs as $similarJob): ?>
                 <a href="#" class="job-card">
                 <div class="job-logo">
-                    <img src="<?php echo $similarJob['comp_logo']; ?>" alt="Logo">
+                    <img src="<?php echo $similarJob['logo']; ?>" alt="Logo">
                 </div>
                 <div class="infor-job-card">
                     <h3><?php echo $similarJob['job_title']; ?></h3>

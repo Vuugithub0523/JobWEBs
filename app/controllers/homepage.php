@@ -9,7 +9,6 @@ class homepage extends DController {
     
     //Phương thức index để hiển thị trang chủ
     public function index() {
-        // Load model industryModel để lấy danh sách ngành
         $industryModel = $this->load->model('industryModel');
     
         // Lấy danh sách ngành từ model

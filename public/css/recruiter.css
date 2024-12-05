@@ -49,6 +49,10 @@ body {
     padding-top: 16px;
 }
 
+.company-title {
+    margin-top: 24px;
+}
+
 /* Sidebar */
 .sidebar {
     width: 250px;
@@ -837,4 +841,25 @@ textarea {
     text-align: center;
     font-style: italic;
     color: #777;
+}
+
+
+.select-control {
+    font-size: 14px;
+    color: #757575;
+    padding: 10px 15px; /* Tăng khoảng cách bên trong */
+    border: 1px solid #ddd; /* Thêm viền dày màu xanh */
+    border-radius: 4px; /* Bo tròn góc */
+    width: 100%; /* Đảm bảo chiều rộng đầy đủ */
+}
+
+.select-control:focus {
+    outline: none; /* Loại bỏ viền mặc định khi focus */
+    border-color: #0056b3; /* Đổi màu viền khi focus */
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng đổ bóng khi focus */
+}
+
+.delete-job a {
+    text-decoration: none;
+    color: red;
 }
