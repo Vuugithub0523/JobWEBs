@@ -27,7 +27,7 @@
                         if (isset($_SESSION['current'])) {
                             $currentUser = $_SESSION['current'];
                     ?>
-                    <img src="https://via.placeholder.com/40" alt="Avatar">
+                    <img src="../public/img/<?php echo $currentUser['avatar'] ?>" alt="Avatar">
                     <span><?php echo $currentUser['full_name'] ?></span>
                     
                     <?php
@@ -115,7 +115,13 @@
                 <h1>Tạo việc làm</h1>
                     <!-- Tiêu đề công việc -->
                 <div class="form-group">
-                    <input type="hidden" value="2" name="user_id">
+                    <?php
+                        foreach($userbyid as $key => $value) {
+                    ?>
+                    <input type="hidden" value="<?php echo $value['user_id']; ?>" name="user_id">
+                    <?php 
+                        }
+                    ?>
                     <label for="job-title">Tiêu đề công việc</label>
                     <p><i>Tiêu đề công việc phải miêu tả một vị trí</i></p>
                     <input name="job_title" type="text" id="job-title" placeholder="e.g. Software Engineer" required>
@@ -131,13 +137,19 @@
                         <label><input type="radio" name="job_type_id" value="5"> Contract</label>
                     </div>
                 </div> 
-                <input type="hidden" name="status" value="open">
-                <input type="hidden" name="location" value="DaNang,VN">
+                <input type="hidden" name="job_status" value="open">
+                <?php
+                    foreach($userbyid as $key => $value) {
+                    ?>
+                <input type="hidden" name="job_location" value="<?php echo $value['comp_address']; ?>">
+                <?php 
+                    }
+                ?>
                     <!-- Lương -->
                 <div class="form-group">
                     <label for="salary">Lương</label>
                     <div class="salary-range">
-                        <input type="number" name="salary" id="salary-max" placeholder="$ Min" required>
+                        <input type="number" name="job_salary" id="salary-max" placeholder="$ Min" required>
                     </div>
                 </div>
                     <!-- Yêu cầu kỹ năng -->
@@ -145,7 +157,7 @@
                     <label>Yêu cầu kỹ năng</label>
                     <p><i>Mô tả chi tiết các yêu cầu cho công việc</i></p>
                     <div class="skills">
-                        <textarea name="requirements" id="myTextarea" placeholder="Thêm yêu cầu công việc"></textarea>
+                        <textarea name="job_requirements" id="myTextarea" placeholder="Thêm yêu cầu công việc"></textarea>
                     </div>
                 </div>
                 <div class="next-button">
@@ -158,7 +170,7 @@
                     <label>Trách nhiệm</label>
                     <p><i>Phát thảo các trách nhiệm cốt lõi của vị trí</i></p>
                     <div class="skills">
-                        <textarea name="responsibilities" id="myTextarea" placeholder="Thêm trách nhiệm công việc" style="height: 150px;"></textarea>
+                        <textarea name="job_responsibilities" id="myTextarea" placeholder="Thêm trách nhiệm công việc" style="height: 150px;"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -189,13 +201,13 @@
                 <div class="form-group">
                     <label for="salary">Số lượng cần tuyển</label>
                     <div class="salary-range">
-                        <input type="number" name="required_candidates" id="salary-max" placeholder="Nhập số lượng" required>
+                        <input type="number" name="job_required_candidates" id="salary-max" placeholder="Nhập số lượng" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="salary">Hạn chót</label>
                     <div class="salary-range">
-                        <input name="deadline" type="date" id="salary-max" required>
+                        <input name="job_deadline" type="date" id="salary-max" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -206,8 +218,8 @@
                     </div>
                 </div>
                 
-                <input type="hidden" required name="total_applied" value="0">
-                <input type="hidden" name="posted_date" value="<?php echo date('Y-m-d H:i:s'); ?>">
+                <input type="hidden" required name="job_total_applied" value="0">
+                <input type="hidden" name="job_posted_date" value="<?php echo date('Y-m-d H:i:s'); ?>">
                 <div class="next-button">
                     <button type="submit" id="submit" class="submit-btn">Hoàn tất</button>
                 </div>

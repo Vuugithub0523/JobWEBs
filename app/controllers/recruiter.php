@@ -91,38 +91,40 @@ class recruiter extends DController{
     public function insertjob() {
         $jobmodel = $this->load->model('jobmodel');
         $table_jobs = 'jobs';
-        $user_id = $_POST['user_id'];
+
         $job_title = $_POST['job_title'];
-        $job_type_id = $_POST['job_type_id'];
-        $status = $_POST['status'];
-        $level_id = $_POST['level_id'];
+        $job_status = $_POST['job_status'];
         $job_description = $_POST['job_description'];
-        $responsibilities = $_POST['responsibilities'];
-        $requirements = $_POST['requirements'];
-        $location = $_POST['location'];
+        $job_responsibilities = $_POST['job_responsibilities'];
+        $job_requirements = $_POST['job_requirements'];
+        $job_location = $_POST['job_location'];
         $job_benefit = $_POST['job_benefit'];
-        $salary = $_POST['salary'];
-        $posted_date = $_POST['posted_date'];
-        $deadline = $_POST['deadline'];
-        $required_candidates = $_POST['required_candidates'];
-        $total_applied = $_POST['total_applied'];
+        $job_salary = $_POST['job_salary'];
+        $job_posted_date = $_POST['job_posted_date'];
+        $job_deadline = $_POST['job_deadline'];
+        $job_required_candidates = $_POST['job_required_candidates'];
+        $job_total_applied = $_POST['job_total_applied'];
+        $job_type_id = $_POST['job_type_id'];
+        $level_id = $_POST['level_id'];
+        $user_id = $_POST['user_id'];
+
 
         $data = array(
             'user_id' => $user_id,
             'job_title' => $job_title,
             'job_type_id' => $job_type_id,
-            'status' => $status,
+            'job_status' => $job_status,
             'level_id' => $level_id,
             'job_description' => $job_description,
-            'responsibilities' => $responsibilities,
-            'requirements' => $requirements,
-            'location' => $location,
+            'job_responsibilities' => $job_responsibilities,
+            'job_requirements' => $job_requirements,
+            'job_location' => $job_location,
             'job_benefit' => $job_benefit,
-            'salary' => $salary,
-            'posted_date' => $posted_date,
-            'deadline' => $deadline,
-            'required_candidates' => $required_candidates,
-            'total_applied' => $total_applied
+            'job_salary' => $job_salary,
+            'job_posted_date' => $job_posted_date,
+            'job_deadline' => $job_deadline,
+            'job_required_candidates' => $job_required_candidates,
+            'job_total_applied' => $job_total_applied
         );
 
         $result = $jobmodel->insertjob($table_jobs, $data);
@@ -197,34 +199,34 @@ class recruiter extends DController{
     }
 
     public function updatecompany() {
-        if (!isset($_FILES['logo']) || $_FILES['logo']['error'] !== UPLOAD_ERR_OK) {
+        if (!isset($_FILES['comp_logo']) || $_FILES['comp_logo']['error'] !== UPLOAD_ERR_OK) {
             die('Lỗi tải lên logo hoặc không có logo được tải lên');
         }
     
         $company = $this->load->model('company');
         $table_companies = 'companies';
-        $company_id = $_POST['company_id'];
+        $comp_id = $_POST['comp_id'];
     
-        $company_name = $_POST['company_name'];
-        $logo = $_FILES['logo'];
-        $company_website = $_POST['company_website'];
-        $company_address = $_POST['company_address'];
+        $comp_name = $_POST['comp_name'];
+        $comp_logo = $_FILES['comp_logo'];
+        $comp_website = $_POST['comp_website'];
+        $comp_address = $_POST['comp_address'];
         $employee_count = $_POST['employee_count'];
         $comp_benefit = $_POST['comp_benefit'];
         $industry_id = $_POST['industry_id'];
         $founded_date = $_POST['founded_date'];
-        $description = $_POST['description'];
+        $comp_description = $_POST['comp_description'];
         $user_id = $_POST['user_id'];
     
         // Thư mục đích để lưu logo
         $uploadDir = 'public/img/'; // Đảm bảo thư mục này tồn tại và có quyền ghi
     
         // Tạo tên file mới để tránh trùng lặp
-        $fileName = uniqid() . '-' . basename($logo['name']);
+        $fileName = uniqid() . '-' . basename($comp_logo['name']);
         $uploadPath = $uploadDir . $fileName;
     
         // Kiểm tra và di chuyển file từ thư mục tạm
-        if (move_uploaded_file($logo['tmp_name'], $uploadPath)) {
+        if (move_uploaded_file($comp_logo['tmp_name'], $uploadPath)) {
             // Nếu thành công, lưu đường dẫn file vào cơ sở dữ liệu
             $logoPath = $uploadPath;
         } else {
@@ -232,24 +234,30 @@ class recruiter extends DController{
         }
     
         // Dữ liệu cập nhật
-        $condition = "$table_companies.company_id = '$company_id'";
+        $condition = "$table_companies.comp_id = '$comp_id'";
         $data = array(
-            'company_name' => $company_name,
-            'logo' => $logoPath, // Lưu đường dẫn ảnh vào DB
-            'company_website' => $company_website,
-            'company_address' => $company_address,
+            'comp_name' => $comp_name,
+            'comp_logo' => $logoPath, // Lưu đường dẫn ảnh vào DB
+            'comp_website' => $comp_website,
+            'comp_address' => $comp_address,
             'employee_count' => $employee_count,
             'comp_benefit' => $comp_benefit,
             'industry_id' => $industry_id,
             'founded_date' => $founded_date,
-            'description' => $description,
+            'comp_description' => $comp_description,
             'user_id' => $user_id
         );
     
         // Gọi hàm update
-        $company->updatecompany($table_companies, $data, $condition);
-    
-        echo "Cập nhật thành công!";
+        $msgUpdateCompany = $company->updatecompany($table_companies, $data, $condition);
+        
+        if($msgUpdateCompany == 1) {
+            echo "Cập nhật thành công!";
+            header("Location: http://localhost/job_finder_website/recruiter/recruiter");
+            exit();
+        }else {
+            echo 'Cập nhật thất bại'; 
+        }
     }
     
 
